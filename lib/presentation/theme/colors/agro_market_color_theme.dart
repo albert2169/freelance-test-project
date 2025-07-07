@@ -6,17 +6,17 @@ import 'package:flutter/material.dart';
 abstract class AgroMarketColorTheme {
   static AgroMarketColorThemeExtension light() {
     return AgroMarketColorThemeExtension(
-      barChartColor: AgroMarketColor(AgroMarketColorPalette.primaryLightColor2.value),
+      barChartColor: AgroMarketColor(AgroMarketColorPalette.primaryTextDarkColor.value),
       brightness: Brightness.light,
-      primary: AgroMarketColor(AgroMarketColorPalette.darkGreen.value),
-      secondary: AgroMarketColor(AgroMarketColorPalette.backgroundLightColor.value),
-      tertiary: AgroMarketColor(AgroMarketColorPalette.darkGreen.value),
-      foregroundPrimary: AgroMarketColor(AgroMarketColorPalette.darkGreen.value),
-      foregroundSecondary: AgroMarketColor(AgroMarketColorPalette.secondaryLightColor.value),
-      foregroundTertiary: AgroMarketColor(AgroMarketColorPalette.foregroundTertiaryLight.value),
-      backgroundPrimary: AgroMarketColor(AgroMarketColorPalette.white.value),
-      backgroundSecondary: AgroMarketColor(AgroMarketColorPalette.white.value),
-      backgroundTertiary: AgroMarketColor(AgroMarketColorPalette.backgroundLightColor.value),
+      primary: AgroMarketColor(AgroMarketColorPalette.primaryTextDarkColor.value),
+      secondary: AgroMarketColor(AgroMarketColorPalette.primaryTextDarkColor.value),
+      tertiary: AgroMarketColor(AgroMarketColorPalette.primaryTextDarkColor.value),
+      foregroundPrimary: AgroMarketColor(AgroMarketColorPalette.primaryTextDarkColor.value),
+      foregroundSecondary: AgroMarketColor(AgroMarketColorPalette.primaryTextDarkColor.value),
+      foregroundTertiary: AgroMarketColor(AgroMarketColorPalette.primaryTextDarkColor.value),
+      backgroundPrimary: AgroMarketColor(AgroMarketColorPalette.primaryTextDarkColor.value),
+      backgroundSecondary: AgroMarketColor(AgroMarketColorPalette.primaryTextDarkColor.value),
+      backgroundTertiary: AgroMarketColor(AgroMarketColorPalette.primaryTextDarkColor.value),
     );
   }
 

@@ -1,7 +1,20 @@
+import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_theme.dart';
+import 'package:agro_market/presentation/theme/extensions/background_gradient_extension.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_text_theme.dart';
 import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';
+
+final gradient = LinearGradient(
+            begin: Alignment.topCenter, 
+            end: Alignment.bottomCenter, 
+            colors: [
+              AgroMarketColorPalette.white, 
+              AgroMarketColorPalette.backgroundGradientColor, 
+            ],
+          );
+
+
 
 class AgroMarketTheme {
   static ThemeData get(Brightness mode) {
@@ -15,7 +28,7 @@ class AgroMarketTheme {
       highlightColor: Colors.transparent,
       scaffoldBackgroundColor: colorTheme.backgroundPrimary,
       primaryColor: colorTheme.primary,
-      fontFamily: AppFonts.outfitFontFamily,
+      fontFamily: AppFonts.manropeFontFamily,
    
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
@@ -49,6 +62,7 @@ class AgroMarketTheme {
       extensions: <ThemeExtension<dynamic>>[
         colorTheme,
         textTheme,
+        BackgroundGradientExtension(backgroundGradient: gradient)
       ],
       textTheme: TextTheme(
         titleLarge: TextStyle(
