@@ -17,9 +17,7 @@ class OnboardingFirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).extension<AgroMarketThemeExtension>();
-
-  
-
+    
     return Scaffold(
       body: Container(
         padding: AppPaddings.pageContentPadding,
