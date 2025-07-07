@@ -1,5 +1,8 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
 import 'package:agro_market/presentation/app_constatns/app_images.dart';
 import 'package:agro_market/presentation/app_constatns/app_padding.dart';
+import 'package:agro_market/presentation/app_constatns/text_constants/onboarding_text_constants.dart';
+import 'package:agro_market/presentation/custom/custom_widgets/height_box.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/primary_button.dart';
 import 'package:agro_market/presentation/theme/agro_market_theme.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
@@ -15,13 +18,7 @@ class OnboardingFirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).extension<AgroMarketThemeExtension>();
 
-    if (textTheme == null) {
-      return const Scaffold(
-        body: Center(
-          child: Text('Error: AgroMarketThemeExtension not found in context.'),
-        ),
-      );
-    }
+  
 
     return Scaffold(
       body: Container(
@@ -33,12 +30,16 @@ class OnboardingFirstScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(AppImages.onboardingFirstScreenImage, width: 226, height: 226),
-                  const SizedBox(height: 70),
-                  Text('Добро пожаловать', style: textTheme.introTitleTextStyle),
-                  const SizedBox(height: 40),
+                  Image.asset(
+                    AppImages.onboardingFirstScreenImage,
+                    width: AppDimensions.onboardingFirstScreenImageSize.width,
+                    height: AppDimensions.onboardingFirstScreenImageSize.height,
+                  ),
+                  const HeightBox(height: AppDimensions.bigHeight),
+                  Text(OnboardingTextConstants.titleText, style: textTheme!.introTitleTextStyle),
+                  const HeightBox(height: AppDimensions.normalHeight),
                   Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et',
+                   OnboardingTextConstants.bodyText,
                     textAlign: TextAlign.center,
                     style: textTheme.introBodyTextStyle,
                   ),
@@ -47,9 +48,12 @@ class OnboardingFirstScreen extends StatelessWidget {
             ),
             Padding(
               padding: AppPaddings.primaryButtonBottomPadding,
-              child: PrimaryButton(title: 'Далее', onPressed: () {
-                 context.router.replace(OnboardingSecondRoute());
-              }),
+              child: PrimaryButton(
+                title:OnboardingTextConstants.buttonText,
+                onPressed: () {
+                  context.router.replace(OnboardingSecondRoute());
+                },
+              ),
             ),
           ],
         ),
