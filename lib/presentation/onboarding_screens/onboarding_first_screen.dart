@@ -1,5 +1,5 @@
-import 'package:agro_market/presentation/constatns/app_images.dart';
-import 'package:agro_market/presentation/constatns/app_padding.dart';
+import 'package:agro_market/presentation/app_constatns/app_images.dart';
+import 'package:agro_market/presentation/app_constatns/app_padding.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/primary_button.dart';
 import 'package:agro_market/presentation/theme/agro_market_theme.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
