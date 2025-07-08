@@ -9,10 +9,12 @@ import 'package:flutter/material.dart';
 class PrimaryButton extends StatelessWidget {
   final String title;
   final VoidCallback? onPressed; // Optional callback for when the button is pressed
+  final TextStyle textStyle;
 
   const PrimaryButton({
     super.key,
     required this.title,
+    required this.textStyle,
     this.onPressed,
   });
 
@@ -37,7 +39,7 @@ class PrimaryButton extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: textTheme!.primaryButtonTextStyle
+          style: textStyle
         ),
       ),
     );

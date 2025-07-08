@@ -4,7 +4,6 @@ import 'package:agro_market/presentation/app_constatns/app_padding.dart';
 import 'package:agro_market/presentation/app_constatns/text_constants/onboarding_text_constants.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/height_box.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/primary_button.dart';
-import 'package:agro_market/presentation/theme/agro_market_theme.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
 import 'package:agro_market/router/app_router.gr.dart';
@@ -20,11 +19,9 @@ class OnboardingFirstScreen extends StatelessWidget {
     final textTheme = Theme.of(context).extension<AgroMarketThemeExtension>();
 
     return Scaffold(
+        backgroundColor: AgroMarketColorPalette.backgroundGradientColor,
       body: Container(
-        color: AgroMarketColorPalette.backgroundGradientColor,
-
         padding: AppPaddings.pageContentPadding,
-        //  decoration: BoxDecoration(gradient: gradient),
         child: Column(
           children: [
             Expanded(
@@ -50,6 +47,7 @@ class OnboardingFirstScreen extends StatelessWidget {
             Padding(
               padding: AppPaddings.primaryButtonBottomPadding,
               child: PrimaryButton(
+                textStyle: textTheme.primaryButtonTextStyle,
                 title: OnboardingTextConstants.buttonText,
                 onPressed: () {
                   context.router.replace(OnboardingSecondRoute());

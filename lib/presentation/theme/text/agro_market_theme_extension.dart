@@ -8,24 +8,33 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
     required this.introBodyTextStyle,
     required this.primaryButtonTextStyle,
     required this.appBarTitleStyle,
+    required this.productNameStyle,
+    required this.productCategoryStyle,
   });
 
   final TextStyle introTitleTextStyle;
   final TextStyle introBodyTextStyle;
   final TextStyle primaryButtonTextStyle;
   final TextStyle appBarTitleStyle;
+  final TextStyle productNameStyle;
+  final TextStyle productCategoryStyle;
 
   @override
   AgroMarketThemeExtension copyWith({
     TextStyle? introTitleTextStyle,
     TextStyle? introBodyTextStyle,
     TextStyle? primaryButtonTextStyle,
+    TextStyle? appBarTitleStyle,
+    TextStyle? productNameStyle,
+    TextStyle? productCategoryStyle,
   }) {
     return AgroMarketThemeExtension(
       primaryButtonTextStyle: primaryButtonTextStyle ?? this.primaryButtonTextStyle,
       introTitleTextStyle: introTitleTextStyle ?? this.introTitleTextStyle,
       introBodyTextStyle: introBodyTextStyle ?? this.introBodyTextStyle,
-      appBarTitleStyle: appBarTitleStyle
+      appBarTitleStyle: appBarTitleStyle ?? this.appBarTitleStyle,
+      productNameStyle: productNameStyle ?? this.productNameStyle, 
+      productCategoryStyle: productCategoryStyle ?? this.productCategoryStyle 
     );
   }
 
@@ -43,6 +52,8 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
       introBodyTextStyle: TextStyle.lerp(introBodyTextStyle, other.introBodyTextStyle, t) ?? defaultTextStyle,
       primaryButtonTextStyle: TextStyle.lerp(primaryButtonTextStyle, other.primaryButtonTextStyle, t) ?? defaultTextStyle,
       appBarTitleStyle: TextStyle.lerp(appBarTitleStyle, other.appBarTitleStyle, t) ?? defaultTextStyle,
+      productNameStyle: TextStyle.lerp(productNameStyle, other.productNameStyle, t) ?? defaultTextStyle,
+      productCategoryStyle: TextStyle.lerp(productCategoryStyle, other.productCategoryStyle, t) ?? defaultTextStyle,
     );
   }
 

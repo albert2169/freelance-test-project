@@ -20,11 +20,9 @@ class OnboardingSecondScreen extends StatelessWidget {
     final textTheme = Theme.of(context).extension<AgroMarketThemeExtension>();
 
     return Scaffold(
+      backgroundColor: AgroMarketColorPalette.backgroundGradientColor,
       body: Container(
         padding: AppPaddings.pageContentPadding,
-        color: AgroMarketColorPalette.backgroundGradientColor,
-
-        //decoration: BoxDecoration(gradient: gradient),
         child: Column(
           children: [
             Expanded(
@@ -50,9 +48,11 @@ class OnboardingSecondScreen extends StatelessWidget {
             Padding(
               padding: AppPaddings.primaryButtonBottomPadding,
               child: PrimaryButton(
+                textStyle: textTheme.primaryButtonTextStyle,
+
                 title: OnboardingTextConstants.buttonText,
                 onPressed: () {
-                  context.router.replace(HomeRoute());
+                  context.router.replace(ProductCatalogue());
                 },
               ),
             ),

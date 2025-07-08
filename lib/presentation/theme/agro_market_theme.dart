@@ -5,15 +5,6 @@ import 'package:agro_market/presentation/theme/text/agro_market_text_theme.dart'
 import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';
 
-final gradient = LinearGradient(
-            begin: Alignment.topCenter, 
-            end: Alignment.bottomCenter, 
-            colors: [
-              AgroMarketColorPalette.white, 
-              AgroMarketColorPalette.backgroundGradientColor, 
-            ],
-          );
-
 
 
 class AgroMarketTheme {
@@ -62,7 +53,6 @@ class AgroMarketTheme {
       extensions: <ThemeExtension<dynamic>>[
         colorTheme,
         textTheme,
-        BackgroundGradientExtension(backgroundGradient: gradient)
       ],
       textTheme: TextTheme(
         titleLarge: TextStyle(
