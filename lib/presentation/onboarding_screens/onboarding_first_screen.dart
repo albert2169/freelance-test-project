@@ -5,6 +5,7 @@ import 'package:agro_market/presentation/app_constatns/text_constants/onboarding
 import 'package:agro_market/presentation/custom/custom_widgets/height_box.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/primary_button.dart';
 import 'package:agro_market/presentation/theme/agro_market_theme.dart';
+import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
 import 'package:agro_market/router/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
@@ -17,11 +18,13 @@ class OnboardingFirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).extension<AgroMarketThemeExtension>();
-    
+
     return Scaffold(
       body: Container(
+        color: AgroMarketColorPalette.backgroundGradientColor,
+
         padding: AppPaddings.pageContentPadding,
-        decoration: BoxDecoration(gradient: gradient),
+        //  decoration: BoxDecoration(gradient: gradient),
         child: Column(
           children: [
             Expanded(
@@ -37,7 +40,7 @@ class OnboardingFirstScreen extends StatelessWidget {
                   Text(OnboardingTextConstants.titleText, style: textTheme!.introTitleTextStyle),
                   const HeightBox(height: AppDimensions.normalHeight),
                   Text(
-                   OnboardingTextConstants.bodyText,
+                    OnboardingTextConstants.bodyText,
                     textAlign: TextAlign.center,
                     style: textTheme.introBodyTextStyle,
                   ),
@@ -47,7 +50,7 @@ class OnboardingFirstScreen extends StatelessWidget {
             Padding(
               padding: AppPaddings.primaryButtonBottomPadding,
               child: PrimaryButton(
-                title:OnboardingTextConstants.buttonText,
+                title: OnboardingTextConstants.buttonText,
                 onPressed: () {
                   context.router.replace(OnboardingSecondRoute());
                 },

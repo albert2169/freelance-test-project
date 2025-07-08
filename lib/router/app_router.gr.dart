@@ -9,7 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:agro_market/presentation/home_screen.dart' as _i1;
+import 'package:agro_market/presentation/home_screen/home_screen.dart' as _i1;
 import 'package:agro_market/presentation/onboarding_screens/onboarding_first_screen.dart'
     as _i2;
 import 'package:agro_market/presentation/onboarding_screens/onboarding_second_screen.dart'

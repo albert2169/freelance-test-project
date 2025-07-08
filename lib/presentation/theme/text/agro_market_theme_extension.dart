@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 @immutable
 class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> {
   const AgroMarketThemeExtension({
+
     required this.introTitleTextStyle,
     required this.introBodyTextStyle,
     required this.primaryButtonTextStyle,
+    required this.appBarTitleStyle,
   });
 
   final TextStyle introTitleTextStyle;
   final TextStyle introBodyTextStyle;
   final TextStyle primaryButtonTextStyle;
+  final TextStyle appBarTitleStyle;
 
   @override
   AgroMarketThemeExtension copyWith({
@@ -22,6 +25,7 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
       primaryButtonTextStyle: primaryButtonTextStyle ?? this.primaryButtonTextStyle,
       introTitleTextStyle: introTitleTextStyle ?? this.introTitleTextStyle,
       introBodyTextStyle: introBodyTextStyle ?? this.introBodyTextStyle,
+      appBarTitleStyle: appBarTitleStyle
     );
   }
 
@@ -38,6 +42,7 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
       introTitleTextStyle: TextStyle.lerp(introTitleTextStyle, other.introTitleTextStyle, t) ?? defaultTextStyle,
       introBodyTextStyle: TextStyle.lerp(introBodyTextStyle, other.introBodyTextStyle, t) ?? defaultTextStyle,
       primaryButtonTextStyle: TextStyle.lerp(primaryButtonTextStyle, other.primaryButtonTextStyle, t) ?? defaultTextStyle,
+      appBarTitleStyle: TextStyle.lerp(appBarTitleStyle, other.appBarTitleStyle, t) ?? defaultTextStyle,
     );
   }
 

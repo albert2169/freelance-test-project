@@ -29,4 +29,6 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/
+    - assets/icons/
     - assets/images/onboarding/
+    - assets/images/product_category/

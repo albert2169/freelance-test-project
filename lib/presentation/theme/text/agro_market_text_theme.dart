@@ -27,6 +27,12 @@ abstract class AgroMarketTextTheme {
         color: AgroMarketColorPalette.white,
         fontSize: 16,
       ),
+      appBarTitleStyle: TextStyle(
+        fontFamily: AppFonts.manropeFontFamily,
+        fontWeight: AppFonts.semiBold,
+        color: AgroMarketColorPalette.primaryTextDarkColor,
+        fontSize: 17,
+      ),
     );
   }
 }
