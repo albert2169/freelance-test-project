@@ -16,6 +16,7 @@ import 'package:agro_market/presentation/screens/product_catalogue/widgets/appli
 import 'package:agro_market/presentation/screens/product_catalogue/widgets/product_card.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
+import 'package:agro_market/router/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -100,7 +101,9 @@ class _ProductCatalogueState extends State<ProductCatalogue> {
                             itemBuilder: (context, index) {
                               return ProductCard(
                                 product: products[index],
-                                onCardTap: () {},
+                                onCardTap: () {
+                                  context.router.push(ProductRoute(product: products[index]));
+                                },
                               );
                             },
                           ),

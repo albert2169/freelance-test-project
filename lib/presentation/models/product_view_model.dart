@@ -8,7 +8,7 @@ class ProductViewModel {
   final String id;
   final String name;
   final String compoundDescription;
-  final double pricePerUnit;
+final Map<PackagingType, Map<String, double>> priceInfo;
   final Image? displayImage;
   final List<Image> previewImages;
   final String description;
@@ -19,18 +19,18 @@ class ProductViewModel {
     this.previewImages = const [],
     this.id = 'default_id',
     this.name = 'Безымянный Продукт',
-    this.pricePerUnit = 0.0,
+    this.priceInfo = const {},
     this.displayImage,
-    this.description = 'Описание недоступно.',
+    this.description = '',
     this.productCategory = ProductCategory.none,
     this.packagingType = PackagingType.amount,
-    this.compoundDescription = 'Описание недоступно',
+    this.compoundDescription = '',
   });
 
   ProductViewModel copyWith({
     String? id,
     String? name,
-    double? pricePerUnit,
+    Map<PackagingType, Map<String, double>>? pricePerUnit,
     Image? displayImage,
     String? description,
     ProductCategory? productCategory,
@@ -40,7 +40,7 @@ class ProductViewModel {
     return ProductViewModel(
       id: id ?? this.id,
       name: name ?? this.name,
-      pricePerUnit: pricePerUnit ?? this.pricePerUnit,
+      priceInfo: pricePerUnit ?? this.priceInfo,
       displayImage: displayImage ?? this.displayImage,
       description: description ?? this.description,
       productCategory: productCategory ?? this.productCategory,
@@ -50,7 +50,7 @@ class ProductViewModel {
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, pricePerUnit: $pricePerUnit, displayImage: $displayImage, description: $description, produc )';
+    return 'Product(id: $id, name: $name, pricePerUnit: $priceInfo, displayImage: $displayImage, description: $description, produc )';
   }
 
   @override
@@ -60,7 +60,7 @@ class ProductViewModel {
     return other is ProductViewModel &&
         other.id == id &&
         other.name == name &&
-        other.pricePerUnit == pricePerUnit &&
+        other.priceInfo == priceInfo &&
         other.displayImage == displayImage &&
         other.description == description &&
         other.productCategory == productCategory;
@@ -70,7 +70,7 @@ class ProductViewModel {
   int get hashCode {
     return id.hashCode ^
         name.hashCode ^
-        pricePerUnit.hashCode ^
+        priceInfo.hashCode ^
         displayImage.hashCode ^
         description.hashCode ^
         productCategory.hashCode;

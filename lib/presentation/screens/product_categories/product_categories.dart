@@ -1,10 +1,9 @@
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
 import 'package:agro_market/presentation/app_constatns/app_padding.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/custom_app_bar.dart';
-import 'package:agro_market/presentation/custom/custom_widgets/width_box.dart';
 import 'package:agro_market/presentation/custom/enums/prouduct_category_enum.dart';
+import 'package:agro_market/presentation/screens/product_categories/category_item.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
-import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
 import 'package:agro_market/router/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,6 @@ class _ProductCategoriesScreenState extends State<ProductCategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     final categories = ProductCategory.values;
-    final textTheme = Theme.of(context).extension<AgroMarketThemeExtension>();
 
     return Scaffold(
       backgroundColor: AgroMarketColorPalette.backgroundGradientColor,
@@ -55,21 +53,7 @@ class _ProductCategoriesScreenState extends State<ProductCategoriesScreen> {
                 onTap: () {
                     context.router.push(ProductSubcategoriesRoute( productCategory: categories[index]));
                 },
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  height: 40,
-                  child: Row(
-                    children: [
-                      SizedBox(width: 40, height: 40, child: category.image),
-                      const WidthBox(width: 12),
-                      Text(
-                        category.name,
-                        style: textTheme?.productCategoryStyle.copyWith(fontSize: 16),
-                      ),
-                      const WidthBox(width: 12),
-                    ],
-                  ),
-                ),
+                child: CategoryItem(category: category, ),
               );
             },
           ),

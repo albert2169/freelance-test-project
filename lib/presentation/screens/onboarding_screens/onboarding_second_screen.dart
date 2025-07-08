@@ -4,7 +4,6 @@ import 'package:agro_market/presentation/app_constatns/app_padding.dart';
 import 'package:agro_market/presentation/app_constatns/text_constants/onboarding_text_constants.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/height_box.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/primary_button.dart';
-import 'package:agro_market/presentation/theme/agro_market_theme.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
 import 'package:agro_market/router/app_router.gr.dart';

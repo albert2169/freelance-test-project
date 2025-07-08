@@ -1,6 +1,4 @@
-import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_theme.dart';
-import 'package:agro_market/presentation/theme/extensions/background_gradient_extension.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_text_theme.dart';
 import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';

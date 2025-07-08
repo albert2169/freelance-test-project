@@ -10,6 +10,7 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
     required this.appBarTitleStyle,
     required this.productNameStyle,
     required this.productCategoryStyle,
+    required this.productBigTextStyle,
   });
 
   final TextStyle introTitleTextStyle;
@@ -18,6 +19,7 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
   final TextStyle appBarTitleStyle;
   final TextStyle productNameStyle;
   final TextStyle productCategoryStyle;
+  final TextStyle productBigTextStyle;
 
   @override
   AgroMarketThemeExtension copyWith({
@@ -27,6 +29,7 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
     TextStyle? appBarTitleStyle,
     TextStyle? productNameStyle,
     TextStyle? productCategoryStyle,
+    TextStyle? productBigTextStyle,
   }) {
     return AgroMarketThemeExtension(
       primaryButtonTextStyle: primaryButtonTextStyle ?? this.primaryButtonTextStyle,
@@ -34,7 +37,8 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
       introBodyTextStyle: introBodyTextStyle ?? this.introBodyTextStyle,
       appBarTitleStyle: appBarTitleStyle ?? this.appBarTitleStyle,
       productNameStyle: productNameStyle ?? this.productNameStyle, 
-      productCategoryStyle: productCategoryStyle ?? this.productCategoryStyle 
+      productCategoryStyle: productCategoryStyle ?? this.productCategoryStyle,
+      productBigTextStyle: productBigTextStyle ?? this.productBigTextStyle
     );
   }
 
@@ -54,6 +58,8 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
       appBarTitleStyle: TextStyle.lerp(appBarTitleStyle, other.appBarTitleStyle, t) ?? defaultTextStyle,
       productNameStyle: TextStyle.lerp(productNameStyle, other.productNameStyle, t) ?? defaultTextStyle,
       productCategoryStyle: TextStyle.lerp(productCategoryStyle, other.productCategoryStyle, t) ?? defaultTextStyle,
+      productBigTextStyle: TextStyle.lerp(productBigTextStyle, other.productBigTextStyle, t) ?? defaultTextStyle,
+
     );
   }
 

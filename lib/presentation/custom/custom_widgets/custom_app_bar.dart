@@ -1,4 +1,3 @@
-import 'package:agro_market/presentation/app_constatns/app_padding.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
 import 'package:flutter/material.dart';

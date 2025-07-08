@@ -19,7 +19,7 @@ class ProductCard extends StatelessWidget {
     final textTheme = Theme.of(context).extension<AgroMarketThemeExtension>();
 
     return GestureDetector(
-      onTap: onCardTap(),
+      onTap: () => onCardTap(),
       child: Container(
         decoration: BoxDecoration(
           color: AgroMarketColorPalette.white,
@@ -66,7 +66,7 @@ class ProductCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: SizedBox(
                   height: 22,
-                  child: PrimaryButton(title: 'Подробнее', onPressed: () {}, textStyle: textTheme.primaryButtonTextStyle.copyWith(fontSize: 11, fontWeight: AppFonts.meduimPlust),),
+                  child: PrimaryButton(title: 'Подробнее', onPressed: () {}, textStyle: textTheme.primaryButtonTextStyle.copyWith(fontSize: 11, fontWeight: AppFonts.meduimPlus),),
                 ),
               ),
             ],
