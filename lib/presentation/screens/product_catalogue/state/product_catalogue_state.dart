@@ -36,5 +36,5 @@ class ProductCatalogueState extends Equatable {
   }
 
   @override
-  List<Object> get props => [products, loadState, errorMsg, appliedFilter];
+  List<Object> get props => [products, loadState, errorMsg, appliedFilter, filteredProducts];
 }

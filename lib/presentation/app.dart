@@ -1,3 +1,4 @@
+import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_bloc.dart';
 import 'package:agro_market/presentation/screens/product_catalogue/state/product_catalogue_bloc.dart';
 import 'package:agro_market/presentation/theme/agro_market_theme.dart';
 import 'package:agro_market/router/app_router.dart';
@@ -14,6 +15,7 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => ProductCatalogueBloc()),
+        BlocProvider(create: (_) => ShoppingBasketBloc()),
       ],
       child: MaterialApp.router(
         routerConfig: _appRouter.config(),

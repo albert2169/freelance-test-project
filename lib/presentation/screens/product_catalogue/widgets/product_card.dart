@@ -66,7 +66,14 @@ class ProductCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: SizedBox(
                   height: 22,
-                  child: PrimaryButton(title: 'Подробнее', onPressed: () {}, textStyle: textTheme.primaryButtonTextStyle.copyWith(fontSize: 11, fontWeight: AppFonts.meduimPlus),),
+                  child: PrimaryButton(
+                    title: 'Подробнее',
+                    onPressed: () => onCardTap(),
+                    textStyle: textTheme.primaryButtonTextStyle.copyWith(
+                      fontSize: 11,
+                      fontWeight: AppFonts.meduimPlus,
+                    ),
+                  ),
                 ),
               ),
             ],
