@@ -38,6 +38,7 @@ class _ProductCatalogueState extends State<ProductCatalogue> {
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       top: false,
       bottom: false,
@@ -48,37 +49,36 @@ class _ProductCatalogueState extends State<ProductCatalogue> {
             backgroundColor: AgroMarketColorPalette.backgroundGradientColor,
             appBar: CustomAppBar(
               title: MainContentConstants.appBarTitle,
-              leftWidget:  AppBarCategoryWidget(selectedCategory: state.appliedFilter),
+              leftWidget: AppBarCategoryWidget(selectedCategory: state.appliedFilter),
               rightWidget: const ShoppingBasketCart(),
             ),
             body: () {
               switch (state.loadState) {
                 case LoadState.loading:
-                  return Container(
+                  return Padding(
                     padding: AppPaddings.pageContentPadding,
-                    child: CustomLoadingWidget(),
+                    child: const CustomLoadingWidget(),
                   );
                 case LoadState.failure:
-                  return Container(
+                  return Padding(
                     padding: AppPaddings.pageContentPadding,
                     child: CustomErrorWidget(errorMsg: state.errorMsg),
                   );
                 case LoadState.loaded:
                   final isFilterApplied = state.appliedFilter != ProductCategory.none;
-                  final products = isFilterApplied
-                      ? [...state.filteredProducts]
-                      : [...state.products];
+                  final products = isFilterApplied ? state.filteredProducts : state.products;
+
                   if (products.isEmpty) {
-                    return const EmptyContentWidget(msg: 'товар не найден',);
+                    return const EmptyContentWidget(msg: 'товар не найден');
                   }
+
                   return SingleChildScrollView(
-                    child: Container(
+                    child: Padding(
                       padding: AppPaddings.pageContentPadding,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           AppliedFilterSection(productCategory: state.appliedFilter),
-                          HeightBox(height: 43),
+                          const HeightBox(height: 43),
                           Align(
                             alignment: Alignment.bottomRight,
                             child: Text(
@@ -86,15 +86,15 @@ class _ProductCatalogueState extends State<ProductCatalogue> {
                               style: textTheme!.productNameStyle.copyWith(fontSize: 14),
                             ),
                           ),
-                          HeightBox(height: 4),
+                          const HeightBox(height: 4),
                           GridView.builder(
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               crossAxisSpacing: 15,
                               mainAxisSpacing: 16,
-                              childAspectRatio: 0.7,
+                              childAspectRatio: 0.6, 
                             ),
                             itemCount: products.length,
                             itemBuilder: (context, index) {

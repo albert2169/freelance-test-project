@@ -30,7 +30,9 @@ class _ProductPackagingSectionState extends State<ProductPackagingSection> {
 
   @override
   Widget build(BuildContext context) {
-    if (packagings.isEmpty) return const SizedBox.shrink();
+    if (packagings.isEmpty) {
+      return const SizedBox.shrink();
+    }
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,45 +42,41 @@ class _ProductPackagingSectionState extends State<ProductPackagingSection> {
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black87),
         ),
         const WidthBox(width: 11),
+        // Scrollable row of options
         Expanded(
-          child: Row(
-            children: packagings.map((option) {
-              final isSelected = _selectedOption == option;
-              return Flexible(
-                fit: FlexFit.tight,
-                child: GestureDetector(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            child: Row(
+              children: packagings.map((option) {
+                final isSelected = _selectedOption == option;
+                return GestureDetector(
                   onTap: () {
-                    setState(() {
-                      _selectedOption = option;
-                    });
+                    setState(() => _selectedOption = option);
                     widget.onPackagingOptionSelected(option);
                   },
                   child: Container(
-                    margin: const EdgeInsets.only(right: 6),
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 8),
+                    margin: const EdgeInsets.only(right: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
                       color: isSelected ? Colors.black87 : Colors.white,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
                         color: isSelected ? Colors.black87 : Colors.grey.shade300,
-                        width: 1,
                       ),
                     ),
-                    child: Center(
-                      child: Text(
-                        option,
-                        style: TextStyle(
-                          color: isSelected ? Colors.white : Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 13,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                    child: Text(
+                      option,
+                      style: TextStyle(
+                        color: isSelected ? Colors.white : Colors.black87,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 13,
                       ),
                     ),
                   ),
-                ),
-              );
-            }).toList(),
+                );
+              }).toList(),
+            ),
           ),
         ),
       ],

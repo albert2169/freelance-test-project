@@ -12,6 +12,7 @@ import 'package:agro_market/presentation/custom/custom_widgets/primary_button.da
 class ProductCard extends StatelessWidget {
   final Function onCardTap;
   final ProductViewModel product;
+
   const ProductCard({super.key, required this.onCardTap, required this.product});
 
   @override
@@ -20,65 +21,65 @@ class ProductCard extends StatelessWidget {
 
     return GestureDetector(
       onTap: () => onCardTap(),
-      child: Container(
-        decoration: BoxDecoration(
-          color: AgroMarketColorPalette.white,
-          borderRadius: BorderRadius.circular(18.6),
-        ),
-        child: Padding(
-          padding: AppPaddings.productCardPadding,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              product.displayImage ?? SizedBox.shrink(),
-              HeightBox(height: 7.82),
-              Padding(
-                padding: EdgeInsetsGeometry.only(left: 10, right: 10),
-                child: Text(
-                  product.name,
-                  style: textTheme!.productNameStyle,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              HeightBox(height: 7.82),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    product.productCategory.image,
-                    WidthBox(width: 1),
-                    Flexible(
-                      child: Text(
-                        product.productCategory.name,
-                        style: textTheme.productCategoryStyle,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.start,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              HeightBox(height: 7.82),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: SizedBox(
-                  height: 22,
-                  child: PrimaryButton(
-                    title: 'Подробнее',
-                    onPressed: () => onCardTap(),
-                    textStyle: textTheme.primaryButtonTextStyle.copyWith(
-                      fontSize: 11,
-                      fontWeight: AppFonts.meduimPlus,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final double imageHeight = constraints.maxHeight * 0.45;
+          final double buttonHeight = constraints.maxHeight * 0.1;
+          return Container(
+            decoration: BoxDecoration(
+              color: AgroMarketColorPalette.white,
+              borderRadius: BorderRadius.circular(18.6),
+            ),
+            child: Padding(
+              padding: AppPaddings.productCardPadding,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (product.displayImage != null)
+                    SizedBox(height: imageHeight, child: product.displayImage),
+                  const HeightBox(height: 7.82),
+                  Expanded(
+                    child: Text(
+                      product.name,
+                      style: textTheme!.productNameStyle,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                ),
+                  const HeightBox(height: 8.1),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      product.productCategory.image,
+                      const WidthBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          product.productCategory.name,
+                          style: textTheme.productCategoryStyle,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  HeightBox(height: 11.72),
+                  SizedBox(
+                    height: buttonHeight,
+                    child: PrimaryButton(
+                      title: 'Подробнее',
+                      onPressed: () => onCardTap(),
+                      textStyle: textTheme.primaryButtonTextStyle.copyWith(
+                        fontSize: 11,
+                        fontWeight: AppFonts.meduimPlus,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }
