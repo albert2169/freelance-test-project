@@ -8,8 +8,9 @@ class ShoppingBasketBloc extends Bloc<ShoppingBasketEvent, ShoppingBasketState> 
     : super(
         const ShoppingBasketState(
           basketProducts: [],
-          loadState: LoadState.loaded,
+          loadState: LoadState.loading,
           errorMsg: '',
+          totalPrice: 0,
         ),
       ) {
     on<FetchBasketProducts>(_handleFetchBasketProducts);
@@ -17,20 +18,48 @@ class ShoppingBasketBloc extends Bloc<ShoppingBasketEvent, ShoppingBasketState> 
     on<AddProductIntoBasket>(_handleAddProductIntoBasket);
   }
 
-  void _handleFetchBasketProducts(FetchBasketProducts event, Emitter<ShoppingBasketState> emit) async {
-    
+  void _handleFetchBasketProducts(
+    FetchBasketProducts event,
+    Emitter<ShoppingBasketState> emit,
+  ) async {
+    state.copyWith(loadState: LoadState.loading);
+    await Future.delayed(const Duration(seconds: 1));
+    emit(state.copyWith(loadState: LoadState.loaded));
   }
 
-  void _handleRemoveBasketProducts(RemoveBasketProducts event, Emitter<ShoppingBasketState> emit) async {
-    
-  }
-
-  void _handleAddProductIntoBasket(AddProductIntoBasket event, Emitter<ShoppingBasketState> emit) async {
+  void _handleRemoveBasketProducts(
+    RemoveBasketProducts event,
+    Emitter<ShoppingBasketState> emit,
+  ) async {
     emit(state.copyWith(loadState: LoadState.loading));
     await Future.delayed(const Duration(seconds: 1));
+    final reducedTotalPrice = state.totalPrice - event.productPrice;
     final basketProductsUpdated = [...state.basketProducts];
+    basketProductsUpdated.removeAt(event.productIdx);
+    event.onSuccess(true);
+    emit(
+      state.copyWith(
+        basketProducts: basketProductsUpdated,
+        totalPrice: reducedTotalPrice,
+        loadState: LoadState.loaded,
+      ),
+    );
+  }
+
+  void _handleAddProductIntoBasket(
+    AddProductIntoBasket event,
+    Emitter<ShoppingBasketState> emit,
+  ) async {
+    final basketProductsUpdated = [...state.basketProducts];
+    final totalPrice = state.totalPrice + event.productPrice;
     basketProductsUpdated.add(event.product);
-    emit(state.copyWith(loadState: LoadState.loaded, basketProducts: basketProductsUpdated));
+    event.onSuccess(true);
+    emit(
+      state.copyWith(
+        loadState: LoadState.loaded,
+        basketProducts: basketProductsUpdated,
+        totalPrice: totalPrice,
+      ),
+    );
   }
 }
-

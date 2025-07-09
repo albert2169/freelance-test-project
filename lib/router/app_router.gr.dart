@@ -10,9 +10,9 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:agro_market/presentation/custom/enums/prouduct_category_enum.dart'
-    as _i9;
-import 'package:agro_market/presentation/models/product_view_model.dart'
     as _i10;
+import 'package:agro_market/presentation/models/product_view_model.dart'
+    as _i11;
 import 'package:agro_market/presentation/screens/onboarding_screens/onboarding_first_screen.dart'
     as _i1;
 import 'package:agro_market/presentation/screens/onboarding_screens/onboarding_second_screen.dart'
@@ -25,18 +25,20 @@ import 'package:agro_market/presentation/screens/product_screen/product_screen.d
     as _i5;
 import 'package:agro_market/presentation/screens/product_subcotegories_screen.dart/product_subcategories_screen.dart'
     as _i6;
-import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/material.dart' as _i8;
+import 'package:agro_market/presentation/screens/shopping_basket_screen/shopping_basket_screen.dart'
+    as _i7;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 
 /// generated route for
 /// [_i1.OnboardingFirstScreen]
-class OnboardingFirstRoute extends _i7.PageRouteInfo<void> {
-  const OnboardingFirstRoute({List<_i7.PageRouteInfo>? children})
+class OnboardingFirstRoute extends _i8.PageRouteInfo<void> {
+  const OnboardingFirstRoute({List<_i8.PageRouteInfo>? children})
     : super(OnboardingFirstRoute.name, initialChildren: children);
 
   static const String name = 'OnboardingFirstRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i1.OnboardingFirstScreen();
@@ -46,13 +48,13 @@ class OnboardingFirstRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.OnboardingSecondScreen]
-class OnboardingSecondRoute extends _i7.PageRouteInfo<void> {
-  const OnboardingSecondRoute({List<_i7.PageRouteInfo>? children})
+class OnboardingSecondRoute extends _i8.PageRouteInfo<void> {
+  const OnboardingSecondRoute({List<_i8.PageRouteInfo>? children})
     : super(OnboardingSecondRoute.name, initialChildren: children);
 
   static const String name = 'OnboardingSecondRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i2.OnboardingSecondScreen();
@@ -62,13 +64,13 @@ class OnboardingSecondRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.ProductCatalogue]
-class ProductCatalogue extends _i7.PageRouteInfo<void> {
-  const ProductCatalogue({List<_i7.PageRouteInfo>? children})
+class ProductCatalogue extends _i8.PageRouteInfo<void> {
+  const ProductCatalogue({List<_i8.PageRouteInfo>? children})
     : super(ProductCatalogue.name, initialChildren: children);
 
   static const String name = 'ProductCatalogue';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       return const _i3.ProductCatalogue();
@@ -79,11 +81,11 @@ class ProductCatalogue extends _i7.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.ProductCategoriesScreen]
 class ProductCategoriesRoute
-    extends _i7.PageRouteInfo<ProductCategoriesRouteArgs> {
+    extends _i8.PageRouteInfo<ProductCategoriesRouteArgs> {
   ProductCategoriesRoute({
-    _i8.Key? key,
-    required _i9.ProductCategory selectedCategory,
-    List<_i7.PageRouteInfo>? children,
+    _i9.Key? key,
+    required _i10.ProductCategory selectedCategory,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
          ProductCategoriesRoute.name,
          args: ProductCategoriesRouteArgs(
@@ -95,7 +97,7 @@ class ProductCategoriesRoute
 
   static const String name = 'ProductCategoriesRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ProductCategoriesRouteArgs>();
@@ -110,9 +112,9 @@ class ProductCategoriesRoute
 class ProductCategoriesRouteArgs {
   const ProductCategoriesRouteArgs({this.key, required this.selectedCategory});
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i9.ProductCategory selectedCategory;
+  final _i10.ProductCategory selectedCategory;
 
   @override
   String toString() {
@@ -132,11 +134,11 @@ class ProductCategoriesRouteArgs {
 
 /// generated route for
 /// [_i5.ProductScreen]
-class ProductRoute extends _i7.PageRouteInfo<ProductRouteArgs> {
+class ProductRoute extends _i8.PageRouteInfo<ProductRouteArgs> {
   ProductRoute({
-    _i8.Key? key,
-    required _i10.ProductViewModel product,
-    List<_i7.PageRouteInfo>? children,
+    _i9.Key? key,
+    required _i11.ProductViewModel product,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
          ProductRoute.name,
          args: ProductRouteArgs(key: key, product: product),
@@ -145,7 +147,7 @@ class ProductRoute extends _i7.PageRouteInfo<ProductRouteArgs> {
 
   static const String name = 'ProductRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ProductRouteArgs>();
@@ -157,9 +159,9 @@ class ProductRoute extends _i7.PageRouteInfo<ProductRouteArgs> {
 class ProductRouteArgs {
   const ProductRouteArgs({this.key, required this.product});
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i10.ProductViewModel product;
+  final _i11.ProductViewModel product;
 
   @override
   String toString() {
@@ -180,11 +182,11 @@ class ProductRouteArgs {
 /// generated route for
 /// [_i6.ProductSubcategoriesScreen]
 class ProductSubcategoriesRoute
-    extends _i7.PageRouteInfo<ProductSubcategoriesRouteArgs> {
+    extends _i8.PageRouteInfo<ProductSubcategoriesRouteArgs> {
   ProductSubcategoriesRoute({
-    _i8.Key? key,
-    required _i9.ProductCategory productCategory,
-    List<_i7.PageRouteInfo>? children,
+    _i9.Key? key,
+    required _i10.ProductCategory productCategory,
+    List<_i8.PageRouteInfo>? children,
   }) : super(
          ProductSubcategoriesRoute.name,
          args: ProductSubcategoriesRouteArgs(
@@ -196,7 +198,7 @@ class ProductSubcategoriesRoute
 
   static const String name = 'ProductSubcategoriesRoute';
 
-  static _i7.PageInfo page = _i7.PageInfo(
+  static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<ProductSubcategoriesRouteArgs>();
@@ -214,9 +216,9 @@ class ProductSubcategoriesRouteArgs {
     required this.productCategory,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i9.ProductCategory productCategory;
+  final _i10.ProductCategory productCategory;
 
   @override
   String toString() {
@@ -232,4 +234,20 @@ class ProductSubcategoriesRouteArgs {
 
   @override
   int get hashCode => key.hashCode ^ productCategory.hashCode;
+}
+
+/// generated route for
+/// [_i7.ShoppingBasketScreen]
+class ShoppingBasketRoute extends _i8.PageRouteInfo<void> {
+  const ShoppingBasketRoute({List<_i8.PageRouteInfo>? children})
+    : super(ShoppingBasketRoute.name, initialChildren: children);
+
+  static const String name = 'ShoppingBasketRoute';
+
+  static _i8.PageInfo page = _i8.PageInfo(
+    name,
+    builder: (data) {
+      return const _i7.ShoppingBasketScreen();
+    },
+  );
 }

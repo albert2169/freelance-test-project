@@ -51,6 +51,30 @@ abstract class AgroMarketTextTheme {
         color: AgroMarketColorPalette.primaryTextDarkColor,
         fontSize: 20,
       ),
+      shoppingBasketProductTitleStyle: TextStyle(
+        fontFamily: AppFonts.manropeFontFamily,
+        fontWeight: AppFonts.bold,
+        color: AgroMarketColorPalette.productCategoryLightColor,
+        fontSize: 12,
+      ),
+      shoppingBasketProductPackagingTextStyle: TextStyle(
+        fontFamily: AppFonts.manropeFontFamily,
+        fontWeight: AppFonts.semiBold,
+        color: AgroMarketColorPalette.productCategoryLightColor,
+        fontSize: 14,
+      ),
+      shoppingBasketProductPriceTextStyle: TextStyle(
+        fontFamily: AppFonts.manropeFontFamily,
+        fontWeight: AppFonts.bold,
+        color: AgroMarketColorPalette.productPriceDarkColor,
+        fontSize: 20,
+      ),
+      shoppingBasketPriceInfoStyle: TextStyle(
+        fontFamily: AppFonts.manropeFontFamily,
+        fontWeight: AppFonts.meduimPlus,
+        color: AgroMarketColorPalette.shoppingBasketPriceInfoColor,
+        fontSize: 14,
+      ),
     );
   }
 }

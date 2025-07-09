@@ -6,26 +6,30 @@ class ShoppingBasketState extends Equatable {
   final List<Map<String,ProductViewModel>> basketProducts;
   final LoadState loadState;
   final String errorMsg;
+  final double totalPrice;
 
   const ShoppingBasketState({
     required this.basketProducts,
     required this.loadState,
     required this.errorMsg,
+    required this.totalPrice,
   });
 
   ShoppingBasketState copyWith({
     List<Map<String,ProductViewModel>>? basketProducts,
     LoadState? loadState,
     String? errorMsg,
+    double? totalPrice
 
   }) {
     return ShoppingBasketState(
       basketProducts: basketProducts ?? this.basketProducts,
       loadState: loadState ?? this.loadState,
       errorMsg: errorMsg ?? this.errorMsg,
+      totalPrice: totalPrice ?? this.totalPrice
     );
   }
 
   @override
-  List<Object> get props => [basketProducts, loadState, errorMsg];
+  List<Object> get props => [basketProducts, loadState, errorMsg, totalPrice];
 }

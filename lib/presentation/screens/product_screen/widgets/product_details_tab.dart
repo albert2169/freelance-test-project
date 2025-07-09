@@ -37,7 +37,7 @@ class _ProductDetailsTabsState extends State<ProductDetailsTabs> {
           const Divider(height: 1, color: Colors.grey),
           HeightBox(height: 32),
           SizedBox(
-            height: 51,
+            height: 100,
             child: TabBarView(
               children: [
                 _buildBulletList(widget.descriptionPoints),
@@ -66,7 +66,6 @@ class _ProductDetailsTabsState extends State<ProductDetailsTabs> {
                   style: const TextStyle(
                     fontSize: 16,
                     color: Colors.black,
-                    //height: 1.4,
                   ),
                 ),
               ),

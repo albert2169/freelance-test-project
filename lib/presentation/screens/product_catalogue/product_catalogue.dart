@@ -69,7 +69,7 @@ class _ProductCatalogueState extends State<ProductCatalogue> {
                       ? [...state.filteredProducts]
                       : [...state.products];
                   if (products.isEmpty) {
-                    return const EmptyContentWidget();
+                    return const EmptyContentWidget(msg: 'товар не найден',);
                   }
                   return SingleChildScrollView(
                     child: Container(

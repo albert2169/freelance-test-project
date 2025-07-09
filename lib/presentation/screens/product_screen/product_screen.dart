@@ -4,12 +4,11 @@ import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_ba
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_event.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_state.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/custom_app_bar.dart';
-import 'package:agro_market/presentation/custom/custom_widgets/custom_error_widget.dart';
+import 'package:agro_market/presentation/custom/helper_functions/custom_dialog.dart';
+import 'package:agro_market/presentation/custom/helper_functions/custom_snack_bar.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/height_box.dart';
-import 'package:agro_market/presentation/custom/custom_widgets/custom_loading_widget.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/primary_button.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/shopping_basket_cart.dart';
-import 'package:agro_market/presentation/custom/enums/load_state_enum.dart';
 import 'package:agro_market/presentation/custom/enums/packaging_type_enum.dart';
 import 'package:agro_market/presentation/models/product_view_model.dart';
 import 'package:agro_market/presentation/screens/product_categories/category_item.dart';
@@ -70,163 +69,197 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).extension<AgroMarketThemeExtension>();
 
-    final previewImages = widget.product.previewImages;
+    return BlocBuilder<ShoppingBasketBloc, ShoppingBasketState>(
+      builder: (context, shoppingBasketState) {
+        final previewImages = widget.product.previewImages;
 
-    if (_selectedImage == null) {
-      return const Center(child: CircularProgressIndicator());
-    }
+        if (_selectedImage == null) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-    return Scaffold(
-      backgroundColor: AgroMarketColorPalette.backgroundGradientColor,
-      appBar: CustomAppBar(
-        rightWidget: const ShoppingBasketCart(),
-        leftWidget: GestureDetector(
-          onTap: () => context.router.pop(),
-          child: SvgPicture.asset(AppIcons.arrowBackIcon),
-        ),
-      ),
-      body: BlocBuilder<ShoppingBasketBloc, ShoppingBasketState>(
-        builder: (context, shoppingBasketState) {
-          switch (shoppingBasketState.loadState) {
-            case LoadState.loading:
-              return CustomLoadingWidget();
-            case LoadState.failure:
-              return CustomErrorWidget(errorMsg: shoppingBasketState.errorMsg);
-            case LoadState.loaded:
-              return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 305,
-                      child: ProductImageSelectionSection(
-                        previewImages: previewImages,
-                        onImageTap: (index) {
-                          setState(() {
-                            _selectedImage = previewImages[index];
-                          });
-                        },
-                        selectedImage: _selectedImage!,
-                      ),
-                    ),
-                    HeightBox(height: 40),
-                    Padding(
-                      padding: AppPaddings.pageContentPadding,
-                      child: Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width / 2,
-                              child: Text(
-                                widget.product.name,
-                                style: textTheme!.productBigTextStyle,
-                              ),
-                            ),
-                          ),
-                          HeightBox(height: 16),
-                          CategoryItem(category: widget.product.productCategory),
-                          HeightBox(height: 32),
-                          widget.product.packagingType != PackagingType.amount
-                              ? ProductPackagingSection(
-                                  onPackagingOptionSelected: (targetAmountSelected) {
-                                    setState(() {
-                                      _selectedPackaging = targetAmountSelected;
-                                      _currentPrice =
-                                          widget.product.priceInfo[widget
-                                              .product
-                                              .packagingType]![_selectedPackaging];
-                                    });
-                                  },
-                                  product: widget.product,
-                                )
-                              : const SizedBox.shrink(),
-                          widget.product.packagingType != PackagingType.amount
-                              ? HeightBox(height: 60)
-                              : const SizedBox.shrink(),
-                          ProductDetailsTabs(
-                            descriptionPoints: widget.product.description.isNotEmpty
-                                ? _parseBulletedString(widget.product.description)
-                                : ['Описание недоступно'],
-                            compositionPoints: widget.product.description.isNotEmpty
-                                ? _parseBulletedString(widget.product.compoundDescription)
-                                : ['Состав недоступен'],
-                          ),
-                          HeightBox(height: 20),
-                          PriceAndQuantitySelector(
-                            shoppingCard: widget.product.packagingType != PackagingType.amount
-                                ? PrimaryButton(
-                                    textStyle: textTheme.primaryButtonTextStyle,
-                                    title: 'В корзину',
-                                    onPressed: () {
-                                      context.read<ShoppingBasketBloc>().add(
-                                        AddProductIntoBasket(
-                                          product: {
-                                            '${widget.product.packagingType != PackagingType.amount ? _selectedPackaging : _currenAmount}':
-                                                widget.product,
-                                          },
-                                        ),
-                                      );
-                                    },
-                                  )
-                                : null,
-                            currentPrice: _currentPrice!,
-                            onQuantityChanged: (value) {
-                              _currenAmount = value;
-                            },
-                            onMinusPressed: (value) {
-                              setState(() {
-                                _currentPrice = value * _initialPrice;
-                              });
-                            },
-                            onPlusPressed: (value) {
-                              setState(() {
-                                _currentPrice = value * _initialPrice;
-                              });
-                            },
-                          ),
-                          HeightBox(height: 16),
-                          Padding(
-                            padding: AppPaddings.primaryButtonBottomPadding,
-                            child: Column(
-                              children: [
-                                widget.product.packagingType == PackagingType.amount
-                                    ? SizedBox(
-                                        child: PrimaryButton(
-                                          textStyle: textTheme.primaryButtonTextStyle,
-                                          title: 'В корзину',
-                                          onPressed: () {
-                                            context.read<ShoppingBasketBloc>().add(
-                                              AddProductIntoBasket(
-                                                product: {
-                                                  '${widget.product.packagingType != PackagingType.amount ? _selectedPackaging : _currenAmount}':
-                                                      widget.product,
-                                                },
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                      )
-                                    : const SizedBox.shrink(),
-                                widget.product.packagingType == PackagingType.amount
-                                    ? HeightBox(height: 16)
-                                    : const SizedBox.shrink(),
-                                PrimaryButton(
-                                  textStyle: textTheme.primaryButtonTextStyle,
-                                  title: 'Заказать',
-                                  onPressed: shoppingBasketState.basketProducts.isEmpty ? null : () {},
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+        return Scaffold(
+          backgroundColor: AgroMarketColorPalette.backgroundGradientColor,
+          appBar: CustomAppBar(
+            rightWidget: const ShoppingBasketCart(),
+            leftWidget: GestureDetector(
+              onTap: () => context.router.pop(),
+              child: SvgPicture.asset(AppIcons.arrowBackIcon),
+            ),
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 305,
+                  child: ProductImageSelectionSection(
+                    previewImages: previewImages,
+                    onImageTap: (index) {
+                      setState(() {
+                        _selectedImage = previewImages[index];
+                      });
+                    },
+                    selectedImage: _selectedImage!,
+                  ),
                 ),
-              );
-          }
-        },
-      ),
+                HeightBox(height: 40),
+                Padding(
+                  padding: AppPaddings.pageContentPadding,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width / 2,
+                          child: Text(widget.product.name, style: textTheme!.productBigTextStyle),
+                        ),
+                      ),
+                      HeightBox(height: 16),
+                      CategoryItem(category: widget.product.productCategory),
+                      HeightBox(height: 32),
+                      if (widget.product.packagingType != PackagingType.amount)
+                        ProductPackagingSection(
+                          onPackagingOptionSelected: (selected) {
+                            setState(() {
+                              _selectedPackaging = selected;
+                              _currentPrice = widget
+                                  .product
+                                  .priceInfo[widget.product.packagingType]![_selectedPackaging];
+                            });
+                          },
+                          product: widget.product,
+                        ),
+                      if (widget.product.packagingType != PackagingType.amount)
+                        HeightBox(height: 60),
+                      ProductDetailsTabs(
+                        descriptionPoints: widget.product.description.isNotEmpty
+                            ? _parseBulletedString(widget.product.description)
+                            : ['Описание недоступно'],
+                        compositionPoints: widget.product.compoundDescription.isNotEmpty
+                            ? _parseBulletedString(widget.product.compoundDescription)
+                            : ['Состав недоступен'],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.only(bottom: 40, left: 20, right: 20, top: 20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                PriceAndQuantitySelector(
+                  shoppingCard: widget.product.packagingType != PackagingType.amount
+                      ? PrimaryButton(
+                          textStyle: textTheme.primaryButtonTextStyle,
+                          title: 'В корзину',
+                          onPressed: () {
+                            context.read<ShoppingBasketBloc>().add(
+                              AddProductIntoBasket(
+                                onSuccess: (isSuccess) {
+                                  if (isSuccess) {
+                                    showCustomSnackBar(
+                                      context,
+                                      'Товар добавлен в корзину',
+                                      AgroMarketColorPalette.primaryButtonColor,
+                                    );
+                                  } else {
+                                    showCustomSnackBar(
+                                      context,
+                                      'Ошибка при добавлении',
+                                      Colors.red,
+                                    );
+                                  }
+                                },
+                                productPrice: _currentPrice!,
+                                product: {
+                                  '${widget.product.packagingType != PackagingType.amount ? _selectedPackaging : _currenAmount}':
+                                      widget.product,
+                                },
+                              ),
+                            );
+                          },
+                        )
+                      : null,
+                  currentPrice: _currentPrice!,
+                  onQuantityChanged: (value) {
+                    _currenAmount = value;
+                  },
+                  onMinusPressed: (value) {
+                    setState(() {
+                      _currentPrice = value * _initialPrice;
+                    });
+                  },
+                  onPlusPressed: (value) {
+                    setState(() {
+                      _currentPrice = value * _initialPrice;
+                    });
+                  },
+                ),
+                HeightBox(height: 20),
+                if (widget.product.packagingType == PackagingType.amount)
+                  PrimaryButton(
+                    textStyle: textTheme.primaryButtonTextStyle,
+                    title: 'В корзину',
+                    onPressed: () {
+                      context.read<ShoppingBasketBloc>().add(
+                        AddProductIntoBasket(
+                          onSuccess: (isSuccess) {
+                            if (isSuccess) {
+                              showCustomSnackBar(
+                                context,
+                                'Товар добавлен в корзину',
+                                AgroMarketColorPalette.primaryButtonColor,
+                              );
+                            } else {
+                              showCustomSnackBar(
+                                context,
+                                'Ошибка при добавлении',
+                                AgroMarketColorPalette.errorColor,
+                              );
+                            }
+                          },
+                          productPrice: _currentPrice!,
+                          product: {
+                            '${widget.product.packagingType != PackagingType.amount ? _selectedPackaging : _currenAmount}':
+                                widget.product,
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                if (widget.product.packagingType == PackagingType.amount) HeightBox(height: 16),
+                PrimaryButton(
+                  textStyle: textTheme.primaryButtonTextStyle,
+                  title: 'Заказать',
+                  onPressed: shoppingBasketState.basketProducts.isEmpty
+                      ? null
+                      : () {
+                          showCustomDialog(
+                            context: context,
+                            title: 'Как вы зотите забрать товар?',
+                            actions: [
+                              PrimaryButton(
+                                title: 'Доставка',
+                                textStyle: textTheme.primaryButtonTextStyle,
+                                onPressed: () {},
+                              ),
+                              PrimaryButton(
+                                title: 'Самовывоз',
+                                backgroundColor: AgroMarketColorPalette.white,
+                                textStyle: textTheme.productCategoryStyle.copyWith(fontSize: 18),
+                                onPressed: () {},
+                              ),
+                            ],
+                          );
+                        },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 

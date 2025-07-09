@@ -11,6 +11,10 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
     required this.productNameStyle,
     required this.productCategoryStyle,
     required this.productBigTextStyle,
+    required this.shoppingBasketProductTitleStyle,
+    required this.shoppingBasketProductPackagingTextStyle,
+    required this.shoppingBasketProductPriceTextStyle,
+    required this.shoppingBasketPriceInfoStyle,
   });
 
   final TextStyle introTitleTextStyle;
@@ -20,6 +24,10 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
   final TextStyle productNameStyle;
   final TextStyle productCategoryStyle;
   final TextStyle productBigTextStyle;
+  final TextStyle shoppingBasketProductTitleStyle;
+  final TextStyle shoppingBasketProductPackagingTextStyle;
+  final TextStyle shoppingBasketProductPriceTextStyle;
+  final TextStyle shoppingBasketPriceInfoStyle;
 
   @override
   AgroMarketThemeExtension copyWith({
@@ -30,6 +38,10 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
     TextStyle? productNameStyle,
     TextStyle? productCategoryStyle,
     TextStyle? productBigTextStyle,
+    TextStyle? shoppingBasketProductTitleStyle,
+    TextStyle? shoppingBasketProductPackagingTextStyle,
+    TextStyle? shoppingBasketProductPriceTextStyle,
+    TextStyle? shoppingBasketPriceInfoStyle,
   }) {
     return AgroMarketThemeExtension(
       primaryButtonTextStyle: primaryButtonTextStyle ?? this.primaryButtonTextStyle,
@@ -38,7 +50,11 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
       appBarTitleStyle: appBarTitleStyle ?? this.appBarTitleStyle,
       productNameStyle: productNameStyle ?? this.productNameStyle, 
       productCategoryStyle: productCategoryStyle ?? this.productCategoryStyle,
-      productBigTextStyle: productBigTextStyle ?? this.productBigTextStyle
+      productBigTextStyle: productBigTextStyle ?? this.productBigTextStyle,
+      shoppingBasketProductTitleStyle: shoppingBasketProductTitleStyle ?? this.shoppingBasketProductTitleStyle,
+      shoppingBasketProductPackagingTextStyle: shoppingBasketProductPackagingTextStyle ?? this.shoppingBasketProductPackagingTextStyle,
+      shoppingBasketProductPriceTextStyle: shoppingBasketProductPriceTextStyle ?? this.shoppingBasketProductPriceTextStyle,
+      shoppingBasketPriceInfoStyle: shoppingBasketPriceInfoStyle ?? this.shoppingBasketPriceInfoStyle,
     );
   }
 
@@ -59,6 +75,10 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
       productNameStyle: TextStyle.lerp(productNameStyle, other.productNameStyle, t) ?? defaultTextStyle,
       productCategoryStyle: TextStyle.lerp(productCategoryStyle, other.productCategoryStyle, t) ?? defaultTextStyle,
       productBigTextStyle: TextStyle.lerp(productBigTextStyle, other.productBigTextStyle, t) ?? defaultTextStyle,
+      shoppingBasketProductTitleStyle: TextStyle.lerp(shoppingBasketProductTitleStyle, other.shoppingBasketProductTitleStyle, t) ?? defaultTextStyle,
+      shoppingBasketProductPackagingTextStyle: TextStyle.lerp(shoppingBasketProductPackagingTextStyle, other.shoppingBasketProductPackagingTextStyle, t) ?? defaultTextStyle,
+      shoppingBasketProductPriceTextStyle: TextStyle.lerp(shoppingBasketProductPriceTextStyle, other.shoppingBasketProductPriceTextStyle, t) ?? defaultTextStyle,
+      shoppingBasketPriceInfoStyle: TextStyle.lerp(shoppingBasketPriceInfoStyle, other.shoppingBasketPriceInfoStyle, t) ?? defaultTextStyle,
 
     );
   }

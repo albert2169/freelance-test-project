@@ -11,14 +11,22 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).extension<AgroMarketThemeExtension>();
 
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      height: 40,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start, 
         children: [
-          SizedBox(child: category.image),
+          category.image,
           WidthBox(width: 12),
-          Text(category.name, style: textTheme?.productCategoryStyle.copyWith(fontSize: 16)),
+          Expanded(
+            child: Text(
+              category.name,
+              style: textTheme?.productCategoryStyle.copyWith(fontSize: 16),
+              softWrap: true,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2, 
+            ),
+          ),
         ],
       ),
     );

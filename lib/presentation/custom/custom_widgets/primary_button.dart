@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String title;
-  final VoidCallback? onPressed; // Optional callback for when the button is pressed
+  final VoidCallback? onPressed; 
   final TextStyle textStyle;
+  final Color? backgroundColor;
 
   const PrimaryButton({
     super.key,
     required this.title,
     required this.textStyle,
-    this.onPressed,
+    required this.onPressed,
+    this.backgroundColor
   });
 
   @override
@@ -23,7 +25,7 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AgroMarketColorPalette.primaryButtonColor,
+          backgroundColor: backgroundColor ?? AgroMarketColorPalette.primaryButtonColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),

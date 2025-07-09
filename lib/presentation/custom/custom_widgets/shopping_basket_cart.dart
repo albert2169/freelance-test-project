@@ -1,6 +1,8 @@
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_bloc.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_state.dart';
+import 'package:agro_market/router/app_router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,7 +22,9 @@ class ShoppingBasketCart extends StatelessWidget {
               children: [
                 GestureDetector(
                   child: SvgPicture.asset(AppIcons.shoppingCardIcon, height: 32, width: 32),
-                  onTap: () {},
+                  onTap: () {
+                    context.router.push(ShoppingBasketRoute());
+                  },
                 ),
                 if (state.basketProducts.isNotEmpty)
                   Positioned(

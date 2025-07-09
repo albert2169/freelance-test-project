@@ -8,10 +8,15 @@ class FetchBasketProducts extends ShoppingBasketEvent {
 
 class RemoveBasketProducts extends ShoppingBasketEvent {
   final int productIdx;
-  RemoveBasketProducts({required this.productIdx});
+  final double productPrice;
+    final Function(bool) onSuccess;
+
+  RemoveBasketProducts({required this.productIdx, required this.productPrice, required this.onSuccess});
 }
 
 class AddProductIntoBasket extends ShoppingBasketEvent {
   final Map<String, ProductViewModel> product;
-  AddProductIntoBasket({required this.product});
+  final double productPrice;
+  final Function(bool) onSuccess;
+  AddProductIntoBasket( {required this.product, required this.productPrice, required this.onSuccess});
 }
