@@ -1,5 +1,6 @@
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
 import 'package:agro_market/presentation/app_constatns/app_padding.dart';
+import 'package:agro_market/presentation/app_constatns/text_constants/product_screen_text_constatnts.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_bloc.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_event.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_state.dart';
@@ -56,7 +57,7 @@ class _SelfPickupScreenState extends State<SelfPickupScreen> {
         child: Scaffold(
           backgroundColor: AgroMarketColorPalette.backgroundGradientColor,
           appBar: CustomAppBar(
-            title: 'Самовывооз',
+            title: ProductScreenTextConstatnts.selfPickupText,
             leftWidget: GestureDetector(
               onTap: () => context.router.pop(),
               child: SvgPicture.asset(AppIcons.arrowBackIcon),

@@ -6,7 +6,7 @@ abstract class ProductScreenTextConstatnts {
   static const String intoTheBasketText = 'В корзину';
   static const String productAddIntoBasketText = 'Товар добавлен в корзину';
   static const String errorWhileAddingIntoTheBasketText = 'Товар добавлен в корзину';
-  static const String productOrderText = 'Товар добавлен в корзину';
+  static const String productOrderText = 'Заказать';
   static const String productTakeQuestionText = 'Как вы зотите забрать товар?';
   static const String productDeliveryText = 'Доставка';
   static const String selfPickupText = 'Самовывоз';

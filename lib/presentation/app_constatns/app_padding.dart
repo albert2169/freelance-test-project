@@ -19,6 +19,6 @@ abstract class AppPaddings {
   static final normalBottomPadding = const EdgeInsets.only(bottom: 8);
   static final productImageSelectionPadding = const EdgeInsets.only(left: 20, top: 35, bottom: 35);
   static final productPackagingSectionRightMarginPadding = const EdgeInsets.only(right: 8);
-  static final productPackagingSectionSymmetricPadding = const EdgeInsets.only(right: 8);
+  static final productPackagingSectionSymmetricPadding = const EdgeInsets.symmetric(horizontal: 12, vertical: 8);
 }
 
