@@ -134,11 +134,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                 return BlocBuilder<ShoppingBasketBloc, ShoppingBasketState>(
                   builder: (context, shoppingBasketState) {
                     return PrimaryButton(
-                      backgroundColor:
-                          addressTextEditingController.text.isEmpty ||
-                              contactNumberTextEditingController.text.isEmpty
-                          ? AgroMarketColorPalette.textFieldBorderColor
-                          : null,
+
                       textStyle: textTheme!.primaryButtonTextStyle,
                       title: 'Заказать',
                       onPressed: () {
