@@ -1,3 +1,4 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
 import 'package:agro_market/presentation/app_constatns/app_padding.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_bloc.dart';
@@ -85,7 +86,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                   return Padding(
                     padding: AppPaddings.pageContentPadding,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 41),
+                      padding: AppPaddings.deliveryScreenOnlyTopPadding,
                       child: Column(
                         children: [
                           CustomTextField(
@@ -93,25 +94,25 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                             textEditingController: addressTextEditingController,
                             textFieldTopic: 'Укажите адрес доставки *',
                           ),
-                          HeightBox(height: 27),
+                          HeightBox(height: AppDimensions.customTextFieldHeight),
                           CustomTextField(
                             errorMsg: contactNumberTextError,
                             keyboardType: TextInputType.numberWithOptions(),
                             textEditingController: contactNumberTextEditingController,
                             textFieldTopic: 'Укажите номер телефона *',
                             prefixWidget: SizedBox(
-                              width: 60,
+                              width: AppDimensions.enormousWidth,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  SvgPicture.asset(AppIcons.textFieldPhoneIcon, width: 18),
-                                  const SizedBox(width: 4),
+                                  SvgPicture.asset(AppIcons.textFieldPhoneIcon, width: AppDimensions.bigMediumWidth),
+                                  const SizedBox(width: AppDimensions.tiniestWidth),
                                   Text('+7', style: textTheme!.textFildPhoneNumberTextStyle),
                                 ],
                               ),
                             ),
                           ),
-                          HeightBox(height: 27),
+                          HeightBox(height: AppDimensions.customTextFieldHeight),
                           CustomTextField(
                             textEditingController: commentTextEditingController,
                             textFieldTopic: 'Комментарий',
@@ -124,7 +125,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
             },
           ),
           bottomNavigationBar: Padding(
-            padding: const EdgeInsets.only(bottom: 40, left: 20, right: 20, top: 20),
+            padding: AppPaddings.bottomNavBarPadding,
             child: BlocBuilder<DeliveryBloc, DeliveryState>(
               builder: (context, state) {
                 if (state.loadState == LoadState.loading) {

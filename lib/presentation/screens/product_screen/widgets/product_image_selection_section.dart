@@ -1,3 +1,5 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
+import 'package:agro_market/presentation/app_constatns/app_padding.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/width_box.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:flutter/material.dart';
@@ -19,30 +21,30 @@ class ProductImageSelectionSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 20, top: 35, bottom: 35),
+          padding: AppPaddings.productImageSelectionPadding,
           child: SizedBox(
-            width: 50,
+            width: AppDimensions.hugeWidth,
             child: ListView.builder(
               itemCount: previewImages.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () => onImageTap(index),
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
+                    padding: AppPaddings.normalBottomPadding,
                     child: Container(
-                      width: 50,
-                      height: 50,
+                      width: AppDimensions.normalSize.width,
+                      height: AppDimensions.normalSize.height,
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: selectedImage == previewImages[index]
                               ? AgroMarketColorPalette.primaryTextDarkColor
-                              : Colors.transparent,
-                          width: 3,
+                              : AgroMarketColorPalette.transparent,
+                          width: AppDimensions.pocoWidth,
                         ),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(AppDimensions.containerSmallRadius),
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(6),
+                        borderRadius: BorderRadius.circular(AppDimensions.containerTinyRadius),
                         child: Image(image: previewImages[index].image, fit: BoxFit.cover),
                       ),
                     ),
@@ -52,10 +54,10 @@ class ProductImageSelectionSection extends StatelessWidget {
             ),
           ),
         ),
-        const WidthBox(width: 16),
+        const WidthBox(width: AppDimensions.mediumWidth),
         Expanded(
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(AppDimensions.containerOrdineryRadius),
             child: Image(
               image: selectedImage.image,
               fit: BoxFit.cover,

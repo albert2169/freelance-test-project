@@ -1,4 +1,6 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
 import 'package:agro_market/presentation/app_constatns/app_padding.dart';
+import 'package:agro_market/presentation/app_constatns/text_constants/main_content_constants.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/height_box.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/width_box.dart';
 import 'package:agro_market/presentation/custom/enums/prouduct_category_enum.dart';
@@ -23,12 +25,12 @@ class ProductCard extends StatelessWidget {
       onTap: () => onCardTap(),
       child: LayoutBuilder(
         builder: (context, constraints) {
-          final double imageHeight = constraints.maxHeight * 0.45;
-          final double buttonHeight = constraints.maxHeight * 0.1;
+          final double imageHeight = constraints.maxHeight * AppDimensions.productCardAspectRatioImageHeight;
+          final double buttonHeight = constraints.maxHeight * AppDimensions.productCardAspectRatioButtonHeight;
           return Container(
             decoration: BoxDecoration(
               color: AgroMarketColorPalette.white,
-              borderRadius: BorderRadius.circular(18.6),
+              borderRadius: BorderRadius.circular(AppDimensions.productCardContainerRadius),
             ),
             child: Padding(
               padding: AppPaddings.productCardPadding,
@@ -37,7 +39,7 @@ class ProductCard extends StatelessWidget {
                 children: [
                   if (product.displayImage != null)
                     SizedBox(height: imageHeight, child: product.displayImage),
-                  const HeightBox(height: 7.82),
+                  const HeightBox(height: AppDimensions.productImageSpaceHeight),
                   Expanded(
                     child: Text(
                       product.name,
@@ -47,12 +49,12 @@ class ProductCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  const HeightBox(height: 8.1),
+                  const HeightBox(height: AppDimensions.productTitleSpaceHeight),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       product.productCategory.image,
-                      const WidthBox(width: 4),
+                      WidthBox(width: AppDimensions.tiniestWidth),
                       Expanded(
                         child: Text(
                           product.productCategory.name,
@@ -63,14 +65,14 @@ class ProductCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  HeightBox(height: 11.72),
+                  HeightBox(height: AppDimensions.productCategorySpaceHeight),
                   SizedBox(
                     height: buttonHeight,
                     child: PrimaryButton(
-                      title: 'Подробнее',
+                      title: MainContentConstants.productCardMoreText,
                       onPressed: () => onCardTap(),
                       textStyle: textTheme.primaryButtonTextStyle.copyWith(
-                        fontSize: 11,
+                        fontSize: AppFonts.pocoFontSize,
                         fontWeight: AppFonts.meduimPlus,
                       ),
                     ),

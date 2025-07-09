@@ -1,3 +1,4 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
 import 'package:agro_market/presentation/custom/enums/prouduct_category_enum.dart';
 import 'package:agro_market/router/app_router.gr.dart';
@@ -12,9 +13,13 @@ class AppBarCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: SvgPicture.asset(AppIcons.categoryIcon, height: 32, width: 32,), 
+      child: SvgPicture.asset(
+        AppIcons.categoryIcon,
+        height: AppDimensions.categoryIconSize.height,
+        width: AppDimensions.categoryIconSize.width,
+      ),
       onTap: () {
-          context.router.push(ProductCategoriesRoute(selectedCategory: selectedCategory));
+        context.router.push(ProductCategoriesRoute(selectedCategory: selectedCategory));
       },
     );
   }

@@ -1,4 +1,5 @@
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
+import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class ShoppingBasketPriceInfoItem extends StatelessWidget {
@@ -22,7 +23,7 @@ class ShoppingBasketPriceInfoItem extends StatelessWidget {
             if (hasFraction)
               TextSpan(
                 text: '.${parts[1]}',
-                style: textTheme?.shoppingBasketProductPriceTextStyle.copyWith(fontSize: 14),
+                style: textTheme?.shoppingBasketProductPriceTextStyle.copyWith(fontSize: AppFonts.smallFontSize),
               ),
           ],
         ),

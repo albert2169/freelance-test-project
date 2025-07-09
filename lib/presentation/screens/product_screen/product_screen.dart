@@ -1,5 +1,7 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
 import 'package:agro_market/presentation/app_constatns/app_padding.dart';
+import 'package:agro_market/presentation/app_constatns/text_constants/product_screen_text_constatnts.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_bloc.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_event.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_state.dart';
@@ -18,6 +20,7 @@ import 'package:agro_market/presentation/screens/product_screen/widgets/product_
 import 'package:agro_market/presentation/screens/product_screen/widgets/product_price_section.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
+import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:agro_market/router/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +94,7 @@ class _ProductScreenState extends State<ProductScreen> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 305,
+                  height: AppDimensions.productImageSelectionSectionHeight,
                   child: ProductImageSelectionSection(
                     previewImages: previewImages,
                     onImageTap: (index) {
@@ -102,7 +105,7 @@ class _ProductScreenState extends State<ProductScreen> {
                     selectedImage: _selectedImage!,
                   ),
                 ),
-                HeightBox(height: 40),
+                HeightBox(height: AppDimensions.normalHeight),
                 Padding(
                   padding: AppPaddings.pageContentPadding,
                   child: Column(
@@ -114,9 +117,9 @@ class _ProductScreenState extends State<ProductScreen> {
                           child: Text(widget.product.name, style: textTheme!.productBigTextStyle),
                         ),
                       ),
-                      HeightBox(height: 16),
+                      HeightBox(height: AppDimensions.mediumHeight),
                       CategoryItem(category: widget.product.productCategory),
-                      HeightBox(height: 32),
+                      HeightBox(height: AppDimensions.bigMediumHeight),
                       if (widget.product.packagingType != PackagingType.amount)
                         ProductPackagingSection(
                           onPackagingOptionSelected: (selected) {
@@ -130,14 +133,14 @@ class _ProductScreenState extends State<ProductScreen> {
                           product: widget.product,
                         ),
                       if (widget.product.packagingType != PackagingType.amount)
-                        HeightBox(height: 60),
+                        HeightBox(height: AppDimensions.hugeHeight),
                       ProductDetailsTabs(
                         descriptionPoints: widget.product.description.isNotEmpty
                             ? _parseBulletedString(widget.product.description)
-                            : ['Описание недоступно'],
+                            : [ProductScreenTextConstatnts.emptyProductDescriptionText],
                         compositionPoints: widget.product.compoundDescription.isNotEmpty
                             ? _parseBulletedString(widget.product.compoundDescription)
-                            : ['Состав недоступен'],
+                            : [ProductScreenTextConstatnts.emptyProductCompositiuonText],
                       ),
                     ],
                   ),
@@ -146,7 +149,7 @@ class _ProductScreenState extends State<ProductScreen> {
             ),
           ),
           bottomNavigationBar: Padding(
-            padding: const EdgeInsets.only(bottom: 40, left: 20, right: 20, top: 20),
+            padding: AppPaddings.bottomNavBarPadding,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -154,7 +157,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   shoppingCard: widget.product.packagingType != PackagingType.amount
                       ? PrimaryButton(
                           textStyle: textTheme.primaryButtonTextStyle,
-                          title: 'В корзину',
+                          title: ProductScreenTextConstatnts.intoTheBasketText,
                           onPressed: () {
                             context.read<ShoppingBasketBloc>().add(
                               AddProductIntoBasket(
@@ -162,13 +165,13 @@ class _ProductScreenState extends State<ProductScreen> {
                                   if (isSuccess) {
                                     showCustomSnackBar(
                                       context,
-                                      'Товар добавлен в корзину',
+                                      ProductScreenTextConstatnts.productAddIntoBasketText,
                                       AgroMarketColorPalette.primaryButtonColor,
                                     );
                                   } else {
                                     showCustomSnackBar(
                                       context,
-                                      'Ошибка при добавлении',
+                                      ProductScreenTextConstatnts.errorWhileAddingIntoTheBasketText,
                                       Colors.red,
                                     );
                                   }
@@ -198,11 +201,11 @@ class _ProductScreenState extends State<ProductScreen> {
                     });
                   },
                 ),
-                HeightBox(height: 20),
+                HeightBox(height: AppDimensions.bigNormalHeight),
                 if (widget.product.packagingType == PackagingType.amount)
                   PrimaryButton(
                     textStyle: textTheme.primaryButtonTextStyle,
-                    title: 'В корзину',
+                    title: ProductScreenTextConstatnts.intoTheBasketText,
                     onPressed: () {
                       context.read<ShoppingBasketBloc>().add(
                         AddProductIntoBasket(
@@ -210,13 +213,13 @@ class _ProductScreenState extends State<ProductScreen> {
                             if (isSuccess) {
                               showCustomSnackBar(
                                 context,
-                                'Товар добавлен в корзину',
+                               ProductScreenTextConstatnts.productAddIntoBasketText,
                                 AgroMarketColorPalette.primaryButtonColor,
                               );
                             } else {
                               showCustomSnackBar(
                                 context,
-                                'Ошибка при добавлении',
+                               ProductScreenTextConstatnts.errorWhileAddingIntoTheBasketText,
                                 AgroMarketColorPalette.errorColor,
                               );
                             }
@@ -230,19 +233,19 @@ class _ProductScreenState extends State<ProductScreen> {
                       );
                     },
                   ),
-                if (widget.product.packagingType == PackagingType.amount) HeightBox(height: 16),
+                if (widget.product.packagingType == PackagingType.amount) HeightBox(height: AppDimensions.mediumHeight),
                 PrimaryButton(
                   textStyle: textTheme.primaryButtonTextStyle,
-                  title: 'Заказать',
+                  title: ProductScreenTextConstatnts.productOrderText,
                   onPressed: shoppingBasketState.basketProducts.isEmpty
                       ? null
                       : () {
                           showCustomDialog(
                             context: context,
-                            title: 'Как вы зотите забрать товар?',
+                            title: ProductScreenTextConstatnts.productTakeQuestionText,
                             actions: [
                               PrimaryButton(
-                                title: 'Доставка',
+                                title: ProductScreenTextConstatnts.productDeliveryText,
                                 textStyle: textTheme.primaryButtonTextStyle,
                                 onPressed: () {
                                   context.pop();
@@ -251,9 +254,11 @@ class _ProductScreenState extends State<ProductScreen> {
                                 },
                               ),
                               PrimaryButton(
-                                title: 'Самовывоз',
+                                title: ProductScreenTextConstatnts.selfPickupText,
                                 backgroundColor: AgroMarketColorPalette.white,
-                                textStyle: textTheme.productCategoryStyle.copyWith(fontSize: 18),
+                                textStyle: textTheme.productCategoryStyle.copyWith(
+                                  fontSize: AppFonts.bigFontSize,
+                                ),
                                 onPressed: () {
                                   context.pop();
 

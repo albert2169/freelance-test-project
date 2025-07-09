@@ -1,5 +1,6 @@
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
 import 'package:agro_market/presentation/app_constatns/app_padding.dart';
+import 'package:agro_market/presentation/app_constatns/text_constants/product_categories_text_constants.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/custom_app_bar.dart';
 import 'package:agro_market/presentation/custom/enums/prouduct_category_enum.dart';
 import 'package:agro_market/presentation/screens/product_categories/category_item.dart';
@@ -36,12 +37,12 @@ class _ProductCategoriesScreenState extends State<ProductCategoriesScreen> {
           onTap: () => context.router.pop(),
           child: SvgPicture.asset(AppIcons.arrowBackIcon),
         ),
-        title: 'Категория',
+        title: ProductCategoriesTextConstants.productCategoriesAppBarTitle,
       ),
       body: Padding(
         padding: AppPaddings.pageContentPadding,
         child: Padding(
-          padding: const EdgeInsets.only(top: 49),
+          padding: AppPaddings.productCategoriesTopPadding,
           child: ListView.builder(
             itemCount: categories.length,
             itemBuilder: (context, index) {

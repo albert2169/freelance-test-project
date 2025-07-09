@@ -3,4 +3,5 @@ abstract class MainContentConstants {
 
   static const String appBarTitle = 'Каталог товаров';
   static const String productAmountText = 'Всего';
+  static const String productCardMoreText = 'Подробнее';
 }

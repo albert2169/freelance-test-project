@@ -1,3 +1,7 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
+import 'package:agro_market/presentation/app_constatns/app_padding.dart';
+import 'package:agro_market/presentation/app_constatns/text_constants/product_categories_text_constants.dart';
+import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:agro_market/presentation/models/product_view_model.dart';
@@ -39,11 +43,10 @@ class _ProductPackagingSectionState extends State<ProductPackagingSection> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Text(
-          'Выбрать фасовку:',
-          style: TextStyle(fontSize: AppFonts.mediumFontSize, fontWeight: FontWeight.w600, color: Colors.black87),
+          ProductCategoriesTextConstants.choosePackagingText,
+          style: TextStyle(fontSize: AppFonts.mediumFontSize, fontWeight: AppFonts.semiBold, color: AgroMarketColorPalette.primaryTextDarkColor),
         ),
-        const WidthBox(width: 11),
-        // Scrollable row of options
+        const WidthBox(width: AppDimensions.normalHeight),
         Expanded(
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -57,19 +60,19 @@ class _ProductPackagingSectionState extends State<ProductPackagingSection> {
                     widget.onPackagingOptionSelected(option);
                   },
                   child: Container(
-                    margin: const EdgeInsets.only(right: 8),
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    margin: AppPaddings.productPackagingSectionRightMarginPadding,
+                    padding: AppPaddings.productPackagingSectionSymmetricPadding,
                     decoration: BoxDecoration(
-                      color: isSelected ? Colors.black87 : Colors.white,
-                      borderRadius: BorderRadius.circular(8),
+                      color: isSelected ? AgroMarketColorPalette.productPriceDarkColor : AgroMarketColorPalette.white,
+                      borderRadius: BorderRadius.circular(AppDimensions.containerSmallRadius),
                       border: Border.all(
-                        color: isSelected ? Colors.black87 : Colors.grey.shade300,
+                        color: isSelected ? AgroMarketColorPalette.productPriceDarkColor : AgroMarketColorPalette.textFieldBorderColor,
                       ),
                     ),
                     child: Text(
                       option,
                       style: TextStyle(
-                        color: isSelected ? Colors.white : Colors.black87,
+                        color: isSelected ? AgroMarketColorPalette.white : AgroMarketColorPalette.productPriceDarkColor,
                         fontWeight: FontWeight.w500,
                         fontSize: AppFonts.normalSmallFontSize,
                       ),

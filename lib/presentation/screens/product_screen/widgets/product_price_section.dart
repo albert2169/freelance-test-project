@@ -1,4 +1,6 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
+import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
 import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +70,7 @@ class _PriceAndQuantitySelectorState extends State<PriceAndQuantitySelector> {
             if (hasFraction)
               TextSpan(
                 text: '.${parts[1]}',
-                style: textTheme?.shoppingBasketProductPriceTextStyle.copyWith(fontSize: 14),
+                style: textTheme?.shoppingBasketProductPriceTextStyle.copyWith(fontSize: AppFonts.smallFontSize),
               ),
           ],
         ),
@@ -88,14 +90,14 @@ class _PriceAndQuantitySelectorState extends State<PriceAndQuantitySelector> {
                     child: SvgPicture.asset(AppIcons.minusIcon),
                   ),
                   Container(
-                    width: 40,
+                    width: AppDimensions.bigWidth,
                     alignment: Alignment.center,
                     child: Text(
                       '$_currentQuantity',
                       style: const TextStyle(
                         fontSize: AppFonts.bigFontSize,
                         fontWeight: FontWeight.w600,
-                        color: Colors.black87,
+                        color: AgroMarketColorPalette.productPriceDarkColor,
                       ),
                     ),
                   ),

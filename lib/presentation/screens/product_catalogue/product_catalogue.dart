@@ -89,7 +89,7 @@ class _ProductCatalogueState extends State<ProductCatalogue> {
                               style: textTheme!.productNameStyle.copyWith(fontSize: AppFonts.smallFontSize),
                             ),
                           ),
-                          const HeightBox(height: 4),
+                          const HeightBox(height: AppDimensions.tiniestHeight),
                           GridView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),

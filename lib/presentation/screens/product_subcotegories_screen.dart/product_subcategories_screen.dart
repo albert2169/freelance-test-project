@@ -1,5 +1,7 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
 import 'package:agro_market/presentation/app_constatns/app_padding.dart';
+import 'package:agro_market/presentation/app_constatns/text_constants/product_categories_text_constants.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/custom_app_bar.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/width_box.dart';
 import 'package:agro_market/presentation/custom/enums/prouduct_category_enum.dart';
@@ -47,7 +49,7 @@ class _ProductSubcategoriesScreenState extends State<ProductSubcategoriesScreen>
       body: Padding(
         padding: AppPaddings.pageContentPadding,
         child: Padding(
-          padding: const EdgeInsets.only(top: 49),
+          padding: AppPaddings.productCategoriesTopPadding,
           child: ListView.builder(
             itemCount: categories.length,
             itemBuilder: (context, index) {
@@ -68,24 +70,24 @@ class _ProductSubcategoriesScreenState extends State<ProductSubcategoriesScreen>
                     return;
                   }
                   context.read<ProductCatalogueBloc>().add(
-                    SetProductFilter(productCategory: widget.productCategory), // for real case it should provide categories[index]
+                    SetProductFilter(productCategory: widget.productCategory), 
                   );
                   setState(() {
                     _selectedCategory = categories[index];
                   });
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  height: 40,
+                  padding: AppPaddings.categoryItemPadding,
+                  height: AppDimensions.productSubcategoriesSize.height,
                   child: Row(
                     children: [
-                      SizedBox(width: 40, height: 40, child: widget.productCategory.image), 
-                      const WidthBox(width: 12),
+                      SizedBox(width: AppDimensions.productSubcategoriesSize.width, height: AppDimensions.productSubcategoriesSize.height, child: widget.productCategory.image), 
+                      const WidthBox(width: AppDimensions.categoryItemSpaceWidth),
                       Text(
-                        category['name'].toString(),
+                        category[ProductCategoriesTextConstants.productCategoriesMapName].toString(),
                         style: textTheme?.productCategoryStyle.copyWith(fontSize: AppFonts.mediumFontSize),
                       ),
-                      const WidthBox(width: 12),
+                      const WidthBox(width: AppDimensions.categoryItemSpaceWidth),
                       if (isSelected) SvgPicture.asset(AppIcons.checkMarkIcon),
                     ],
                   ),

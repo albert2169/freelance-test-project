@@ -1,4 +1,8 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
+import 'package:agro_market/presentation/app_constatns/app_padding.dart';
+import 'package:agro_market/presentation/app_constatns/text_constants/product_screen_text_constatnts.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/height_box.dart';
+import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';
 
@@ -28,17 +32,17 @@ class _ProductDetailsTabsState extends State<ProductDetailsTabs> {
             indicatorColor: Colors.green.shade700,
             labelColor: Colors.black,
             unselectedLabelColor: Colors.grey,
-            labelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-            unselectedLabelStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            labelStyle: const TextStyle(fontSize: AppFonts.mediumFontSize, fontWeight: FontWeight.w600),
+            unselectedLabelStyle: const TextStyle(fontSize: AppFonts.mediumFontSize, fontWeight: FontWeight.w500),
             tabs: const [
-              Tab(text: 'Описание'),
-              Tab(text: 'Состав'),
+              Tab(text: ProductScreenTextConstatnts.productDetailsDescriptionText),
+              Tab(text: ProductScreenTextConstatnts.productDetailsComponentText),
             ],
           ),
-          const Divider(height: 1, color: Colors.grey),
-          HeightBox(height: 32),
+          const Divider(height: AppDimensions.mostTinestHeight, color: AgroMarketColorPalette.textFieldBorderColor),
+          HeightBox(height: AppDimensions.bigMediumHeight),
           SizedBox(
-            height: 100,
+            height: AppDimensions.enormousHeight,
             child: TabBarView(
               children: [
                 _buildBulletList(widget.descriptionPoints),
@@ -56,17 +60,17 @@ class _ProductDetailsTabsState extends State<ProductDetailsTabs> {
       itemCount: points.length,
       itemBuilder: (context, index) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 2.0),
+          padding: AppPaddings.smallBottomPadding,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('• ', style: TextStyle(fontSize: AppFonts.mediumFontSize, color: Colors.black)),
+              const Text('• ', style: TextStyle(fontSize: AppFonts.mediumFontSize, color: AgroMarketColorPalette.productPriceDarkColor)),
               Expanded(
                 child: Text(
                   points[index],
                   style: const TextStyle(
                     fontSize: AppFonts.mediumFontSize,
-                    color: Colors.black,
+                    color: AgroMarketColorPalette.productPriceDarkColor,
                   ),
                 ),
               ),
