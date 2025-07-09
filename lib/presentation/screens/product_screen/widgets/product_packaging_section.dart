@@ -1,3 +1,4 @@
+import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:agro_market/presentation/models/product_view_model.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/width_box.dart';
@@ -39,7 +40,7 @@ class _ProductPackagingSectionState extends State<ProductPackagingSection> {
       children: [
         const Text(
           'Выбрать фасовку:',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black87),
+          style: TextStyle(fontSize: AppFonts.mediumFontSize, fontWeight: FontWeight.w600, color: Colors.black87),
         ),
         const WidthBox(width: 11),
         // Scrollable row of options
@@ -70,7 +71,7 @@ class _ProductPackagingSectionState extends State<ProductPackagingSection> {
                       style: TextStyle(
                         color: isSelected ? Colors.white : Colors.black87,
                         fontWeight: FontWeight.w500,
-                        fontSize: 13,
+                        fontSize: AppFonts.normalSmallFontSize,
                       ),
                     ),
                   ),

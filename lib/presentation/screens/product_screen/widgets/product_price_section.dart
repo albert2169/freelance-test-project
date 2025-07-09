@@ -1,5 +1,6 @@
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
+import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -92,7 +93,7 @@ class _PriceAndQuantitySelectorState extends State<PriceAndQuantitySelector> {
                     child: Text(
                       '$_currentQuantity',
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: AppFonts.bigFontSize,
                         fontWeight: FontWeight.w600,
                         color: Colors.black87,
                       ),

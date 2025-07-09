@@ -1,6 +1,7 @@
 import 'package:agro_market/presentation/app_constatns/app_icons.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_bloc.dart';
 import 'package:agro_market/presentation/blocs/shopping_basket_state/shopping_basket_state.dart';
+import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:agro_market/router/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class ShoppingBasketCart extends StatelessWidget {
                       child: Center(
                         child: Text(
                           '${state.basketProducts.length}',
-                          style: TextStyle(color: Colors.white, fontSize: 10),
+                          style: TextStyle(color: Colors.white, fontSize: AppFonts.pequenoFontSize),
                           textAlign: TextAlign.center,
                         ),
                       ),

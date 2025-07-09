@@ -1,4 +1,5 @@
 import 'package:agro_market/presentation/custom/custom_widgets/height_box.dart';
+import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetailsTabs extends StatefulWidget {
@@ -59,12 +60,12 @@ class _ProductDetailsTabsState extends State<ProductDetailsTabs> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('• ', style: TextStyle(fontSize: 16, color: Colors.black)),
+              const Text('• ', style: TextStyle(fontSize: AppFonts.mediumFontSize, color: Colors.black)),
               Expanded(
                 child: Text(
                   points[index],
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: AppFonts.mediumFontSize,
                     color: Colors.black,
                   ),
                 ),

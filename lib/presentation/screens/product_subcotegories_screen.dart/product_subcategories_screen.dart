@@ -7,6 +7,7 @@ import 'package:agro_market/presentation/screens/product_catalogue/state/product
 import 'package:agro_market/presentation/screens/product_catalogue/state/product_catalogue_event.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
+import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -82,7 +83,7 @@ class _ProductSubcategoriesScreenState extends State<ProductSubcategoriesScreen>
                       const WidthBox(width: 12),
                       Text(
                         category['name'].toString(),
-                        style: textTheme?.productCategoryStyle.copyWith(fontSize: 16),
+                        style: textTheme?.productCategoryStyle.copyWith(fontSize: AppFonts.mediumFontSize),
                       ),
                       const WidthBox(width: 12),
                       if (isSelected) SvgPicture.asset(AppIcons.checkMarkIcon),

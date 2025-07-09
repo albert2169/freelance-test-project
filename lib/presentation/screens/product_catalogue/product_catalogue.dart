@@ -1,4 +1,6 @@
+import 'package:agro_market/presentation/app_constatns/app_dimensions.dart';
 import 'package:agro_market/presentation/app_constatns/app_padding.dart';
+import 'package:agro_market/presentation/app_constatns/text_constants/general_text_constants.dart';
 import 'package:agro_market/presentation/app_constatns/text_constants/main_content_constants.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/custom_app_bar.dart';
 import 'package:agro_market/presentation/custom/custom_widgets/empty_content_widget.dart';
@@ -16,6 +18,7 @@ import 'package:agro_market/presentation/screens/product_catalogue/widgets/appli
 import 'package:agro_market/presentation/screens/product_catalogue/widgets/product_card.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
+import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:agro_market/router/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +72,7 @@ class _ProductCatalogueState extends State<ProductCatalogue> {
                   final products = isFilterApplied ? state.filteredProducts : state.products;
 
                   if (products.isEmpty) {
-                    return const EmptyContentWidget(msg: 'товар не найден');
+                    return const EmptyContentWidget(msg: GeneralTextConstants.noProductMsg);
                   }
 
                   return SingleChildScrollView(
@@ -78,12 +81,12 @@ class _ProductCatalogueState extends State<ProductCatalogue> {
                       child: Column(
                         children: [
                           AppliedFilterSection(productCategory: state.appliedFilter),
-                          const HeightBox(height: 43),
+                          const HeightBox(height: AppDimensions.productCatalogueHeight1),
                           Align(
                             alignment: Alignment.bottomRight,
                             child: Text(
-                              'Всего: ${products.length}',
-                              style: textTheme!.productNameStyle.copyWith(fontSize: 14),
+                              '${MainContentConstants.productAmountText}: ${products.length}',
+                              style: textTheme!.productNameStyle.copyWith(fontSize: AppFonts.smallFontSize),
                             ),
                           ),
                           const HeightBox(height: 4),

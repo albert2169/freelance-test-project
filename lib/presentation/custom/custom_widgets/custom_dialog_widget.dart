@@ -1,3 +1,4 @@
+import 'package:agro_market/presentation/theme/text/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
 
@@ -21,7 +22,7 @@ class CustomDialogWidget extends StatelessWidget {
             Text(
               title,
               textAlign: TextAlign.center,
-              style: textTheme!.appBarTitleStyle.copyWith(fontSize: 15),
+              style: textTheme!.appBarTitleStyle.copyWith(fontSize: AppFonts.smallMediumFontSize),
             ),
             const SizedBox(height: 24),
             if (actions != null)
