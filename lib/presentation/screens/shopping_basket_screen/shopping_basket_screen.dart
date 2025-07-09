@@ -15,6 +15,7 @@ import 'package:agro_market/presentation/screens/shopping_basket_screen/widgets/
 import 'package:agro_market/presentation/screens/shopping_basket_screen/widgets/shopping_basket_price_info_section.dart';
 import 'package:agro_market/presentation/theme/colors/agro_market_color_palette.dart';
 import 'package:agro_market/presentation/theme/text/agro_market_theme_extension.dart';
+import 'package:agro_market/router/app_router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -126,13 +127,21 @@ class _ShoppingBasketScreen extends State<ShoppingBasketScreen> {
                           PrimaryButton(
                             title: 'Доставка',
                             textStyle: textTheme.primaryButtonTextStyle,
-                            onPressed: () {},
+                            onPressed: () {
+                              context.pop();
+
+                              context.router.push(DeliveryRoute());
+                            },
                           ),
                           PrimaryButton(
                             title: 'Самовывоз',
                             backgroundColor: AgroMarketColorPalette.white,
                             textStyle: textTheme.productCategoryStyle.copyWith(fontSize: 18),
-                            onPressed: () {},
+                            onPressed: () {
+                              context.pop();
+
+                              context.router.push(SelfPickupRoute());
+                            },
                           ),
                         ],
                       );

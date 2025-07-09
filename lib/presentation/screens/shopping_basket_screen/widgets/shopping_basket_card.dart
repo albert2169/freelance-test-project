@@ -78,7 +78,7 @@ class ShoppingBasketCard extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () => onCardDeletTap(totalPrice!),
-                  child: SvgPicture.asset(AppIcons.deleteBasket),
+                  child: SvgPicture.asset(AppIcons.deleteBasketIcon),
                 ),
               ],
             ),

@@ -6,6 +6,10 @@ class FetchBasketProducts extends ShoppingBasketEvent {
   FetchBasketProducts();
 }
 
+class InitShoppingBasketState extends ShoppingBasketEvent {
+  InitShoppingBasketState();
+}
+
 class RemoveBasketProducts extends ShoppingBasketEvent {
   final int productIdx;
   final double productPrice;

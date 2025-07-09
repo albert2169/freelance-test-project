@@ -16,6 +16,7 @@ class ShoppingBasketBloc extends Bloc<ShoppingBasketEvent, ShoppingBasketState> 
     on<FetchBasketProducts>(_handleFetchBasketProducts);
     on<RemoveBasketProducts>(_handleRemoveBasketProducts);
     on<AddProductIntoBasket>(_handleAddProductIntoBasket);
+    on<InitShoppingBasketState>(_handleInitShoppingBasketState);
   }
 
   void _handleFetchBasketProducts(
@@ -59,6 +60,20 @@ class ShoppingBasketBloc extends Bloc<ShoppingBasketEvent, ShoppingBasketState> 
         loadState: LoadState.loaded,
         basketProducts: basketProductsUpdated,
         totalPrice: totalPrice,
+      ),
+    );
+  }
+
+  void _handleInitShoppingBasketState(
+    InitShoppingBasketState event,
+    Emitter<ShoppingBasketState> emit,
+  ) async {
+    emit(
+      ShoppingBasketState(
+        basketProducts: [],
+        loadState: LoadState.loading,
+        errorMsg: '',
+        totalPrice: 0,
       ),
     );
   }

@@ -36,3 +36,5 @@ flutter:
     - assets/images/product_category/
     - assets/images/product_images/
     - assets/images/preview_images/
+    - assets/images/pickup_addresses/
+    - assets/images/delivery_images/

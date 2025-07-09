@@ -21,4 +21,13 @@
   static const String previewImageTwo = 'assets/images/preview_images/image2.png';
   static const String previewImageThree = 'assets/images/preview_images/image3.png';
   static const String previewImageFour = 'assets/images/preview_images/image4.png';
+
+  //pickup images
+  static const String deliveryPickUpAddress1Image = 'assets/images/pickup_addresses/address1.png';
+
+  //success delivery images
+
+  static const String deliverySuccess1Image = 'assets/images/delivery_images/success_delivery1.png';
+  static const String deliverySuccess2Image = 'assets/images/delivery_images/success_delivery2.png';
+  static const String deliveryFailureImage = 'assets/images/delivery_images/failure_delivery.png';
 }

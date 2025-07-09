@@ -10,6 +10,7 @@ class AppFonts {
   //Font Families
   static const String manropeFontFamily = 'Manrope';
   static const String poppinsFontFamily = 'Poppins';
+  static const String exo2 = 'Exo 2';
   
 
 

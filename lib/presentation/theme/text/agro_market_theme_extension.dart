@@ -15,6 +15,7 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
     required this.shoppingBasketProductPackagingTextStyle,
     required this.shoppingBasketProductPriceTextStyle,
     required this.shoppingBasketPriceInfoStyle,
+    required this.textFildPhoneNumberTextStyle,
   });
 
   final TextStyle introTitleTextStyle;
@@ -28,6 +29,7 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
   final TextStyle shoppingBasketProductPackagingTextStyle;
   final TextStyle shoppingBasketProductPriceTextStyle;
   final TextStyle shoppingBasketPriceInfoStyle;
+  final TextStyle textFildPhoneNumberTextStyle;
 
   @override
   AgroMarketThemeExtension copyWith({
@@ -42,6 +44,7 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
     TextStyle? shoppingBasketProductPackagingTextStyle,
     TextStyle? shoppingBasketProductPriceTextStyle,
     TextStyle? shoppingBasketPriceInfoStyle,
+    TextStyle? textFildPhoneNumberTextStyle,
   }) {
     return AgroMarketThemeExtension(
       primaryButtonTextStyle: primaryButtonTextStyle ?? this.primaryButtonTextStyle,
@@ -55,6 +58,7 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
       shoppingBasketProductPackagingTextStyle: shoppingBasketProductPackagingTextStyle ?? this.shoppingBasketProductPackagingTextStyle,
       shoppingBasketProductPriceTextStyle: shoppingBasketProductPriceTextStyle ?? this.shoppingBasketProductPriceTextStyle,
       shoppingBasketPriceInfoStyle: shoppingBasketPriceInfoStyle ?? this.shoppingBasketPriceInfoStyle,
+      textFildPhoneNumberTextStyle: textFildPhoneNumberTextStyle ?? this.textFildPhoneNumberTextStyle,
     );
   }
 
@@ -79,6 +83,7 @@ class AgroMarketThemeExtension extends ThemeExtension<AgroMarketThemeExtension> 
       shoppingBasketProductPackagingTextStyle: TextStyle.lerp(shoppingBasketProductPackagingTextStyle, other.shoppingBasketProductPackagingTextStyle, t) ?? defaultTextStyle,
       shoppingBasketProductPriceTextStyle: TextStyle.lerp(shoppingBasketProductPriceTextStyle, other.shoppingBasketProductPriceTextStyle, t) ?? defaultTextStyle,
       shoppingBasketPriceInfoStyle: TextStyle.lerp(shoppingBasketPriceInfoStyle, other.shoppingBasketPriceInfoStyle, t) ?? defaultTextStyle,
+      textFildPhoneNumberTextStyle: TextStyle.lerp(textFildPhoneNumberTextStyle, other.textFildPhoneNumberTextStyle, t) ?? defaultTextStyle,
 
     );
   }

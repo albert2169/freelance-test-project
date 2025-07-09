@@ -12,4 +12,5 @@ class AgroMarketColorPalette {
   static const deviderColor = Color(0xFFD6D3D3);
   static const shoppingBasketPriceInfoColor = Color(0xFF3F3F3F);
   static const errorColor = Colors.red;
+  static const textFieldBorderColor = Color(0xFFD9D9D9);
 }

@@ -75,6 +75,12 @@ abstract class AgroMarketTextTheme {
         color: AgroMarketColorPalette.shoppingBasketPriceInfoColor,
         fontSize: 14,
       ),
+      textFildPhoneNumberTextStyle: TextStyle(
+        fontFamily: AppFonts.exo2,
+        fontWeight: AppFonts.meduimPlus,
+        color: AgroMarketColorPalette.deviderColor,
+        fontSize: 16,
+      ),
     );
   }
 }
